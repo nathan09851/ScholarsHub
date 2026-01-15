@@ -204,7 +204,11 @@ const About = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5" />
-                  <span>+91 98765 43210</span>
+                  <span>+91 88303 68198</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="h-5 w-5" />
+                  <span>+91 95793 39227</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5" />
@@ -212,11 +216,14 @@ const About = () => {
                 </div>
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 mt-0.5" />
-                  <span>123 Education Lane, Panaji, Goa - 403001, India</span>
+                  <span>Thivim, Bardez, Goa & Corlim, Old Goa</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Clock className="h-5 w-5" />
-                  <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
+                <div className="flex items-start gap-3">
+                  <Clock className="h-5 w-5 mt-0.5" />
+                  <div>
+                    <p>Regular Days: 3:00 PM - 6:30 PM</p>
+                    <p>Exam Time: 3:00 PM - 8:00 PM</p>
+                  </div>
                 </div>
               </div>
               

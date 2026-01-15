@@ -7,13 +7,14 @@ import { CheckCircle2, CreditCard, Phone, Building2 } from 'lucide-react';
 
 const plans = [
   {
-    name: 'Single Subject',
-    price: '₹1,500',
+    name: 'Class 5th to 8th',
+    price: '₹700',
     period: '/month',
-    description: 'Perfect for focused learning in one subject',
+    description: 'Perfect for middle school students',
     features: [
-      '1 subject of your choice',
-      '8 sessions per month',
+      'All subjects included',
+      'Regular classes: 3 PM - 6:30 PM',
+      'Exam time: 3 PM - 8 PM',
       'Study materials included',
       'Doubt clearing sessions',
       'Progress reports',
@@ -21,35 +22,20 @@ const plans = [
     popular: false,
   },
   {
-    name: 'Standard',
-    price: '₹3,500',
+    name: 'Class 9th to 10th',
+    price: '₹1,000',
     period: '/month',
-    description: 'Most popular choice for comprehensive learning',
+    description: 'Comprehensive coaching for board preparation',
     features: [
-      'Up to 3 subjects',
-      '12 sessions per month',
+      'All subjects included',
+      'Regular classes: 3 PM - 6:30 PM',
+      'Exam time: 3 PM - 8 PM',
       'All study materials',
       'Weekly doubt sessions',
       'Monthly progress reports',
-      'Parent-teacher meetings',
+      'Board exam preparation',
     ],
     popular: true,
-  },
-  {
-    name: 'Premium',
-    price: '₹5,500',
-    period: '/month',
-    description: 'Complete academic support for serious students',
-    features: [
-      'All 7 subjects included',
-      'Unlimited sessions',
-      'Premium study materials',
-      'Daily doubt clearing',
-      'Weekly progress reports',
-      'One-on-one mentoring',
-      'Exam preparation support',
-    ],
-    popular: false,
   },
 ];
 
@@ -139,7 +125,7 @@ const Payments = () => {
       {/* Pricing Plans */}
       <section className="py-20">
         <div className="container px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {plans.map((plan, index) => (
               <PricingCard key={plan.name} plan={plan} index={index} />
             ))}
@@ -187,7 +173,11 @@ const Payments = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="secondary" size="xl">
                 <Phone className="mr-2 h-5 w-5" />
-                Call Us: +91 98765 43210
+                Call Us: +91 88303 68198
+              </Button>
+              <Button variant="secondary" size="xl">
+                <Phone className="mr-2 h-5 w-5" />
+                Call Us: +91 95793 39227
               </Button>
             </div>
           </div>

@@ -60,7 +60,11 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" />
-                +91 98765 43210
+                +91 88303 68198
+              </li>
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <Phone className="h-4 w-4 text-primary" />
+                +91 95793 39227
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
@@ -68,7 +72,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary mt-0.5" />
-                123 Education Lane, Goa, India
+                Thivim, Bardez, Goa & Corlim, Old Goa
               </li>
             </ul>
           </div>
