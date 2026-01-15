@@ -46,7 +46,7 @@ const team = [
   },
   {
     name: 'Avita',
-    role: 'Mathematics Faculty',
+    role: 'Teaching Faculty',
     experience: "Master's in Mathematics",
   },
   {
