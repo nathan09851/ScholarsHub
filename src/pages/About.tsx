@@ -40,24 +40,24 @@ const values = [
 
 const team = [
   {
-    name: 'Dr. Ramesh Pai',
+    name: 'Shamina Shaikh',
     role: 'Founder & Director',
-    experience: '15+ years in education',
+    experience: 'Business Studies, Former HP Gas Accountant',
   },
   {
-    name: 'Mrs. Sunita Kamat',
-    role: 'Head of Academics',
-    experience: '12+ years in education',
-  },
-  {
-    name: 'Mr. Ajay Naik',
-    role: 'Science Faculty',
-    experience: '8+ years in education',
-  },
-  {
-    name: 'Mrs. Priya Shetty',
+    name: 'Avita',
     role: 'Mathematics Faculty',
-    experience: '10+ years in education',
+    experience: "Master's in Mathematics",
+  },
+  {
+    name: 'Marina',
+    role: 'Teaching Faculty',
+    experience: "Pursuing Master's Degree",
+  },
+  {
+    name: 'Senha',
+    role: 'Teaching Faculty',
+    experience: 'Dedicated Educator',
   },
 ];
 
