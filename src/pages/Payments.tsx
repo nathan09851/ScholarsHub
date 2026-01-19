@@ -82,14 +82,14 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
             variant={plan.popular ? 'hero' : 'default'}
             size="lg"
             className="w-full"
-            asChild
+            onClick={() => {
+              const amount = plan.price.replace('₹', '').replace(',', '');
+              const upiLink = `upi://pay?pa=scholarshubtivim@sbi&pn=Scholars%20Hub&am=${amount}&cu=INR&tn=Course%20Fee%20-%20${encodeURIComponent(plan.name)}`;
+              window.location.href = upiLink;
+            }}
           >
-            <a
-              href={`upi://pay?pa=scholarshubtivim@sbi&pn=Scholars%20Hub&am=${plan.price.replace('₹', '').replace(',', '')}&cu=INR&tn=Course%20Fee%20-%20${encodeURIComponent(plan.name)}`}
-            >
-              <Smartphone className="mr-2 h-4 w-4" />
-              Pay ₹{plan.price.replace('₹', '')} via UPI
-            </a>
+            <Smartphone className="mr-2 h-4 w-4" />
+            Pay {plan.price} via UPI
           </Button>
         </CardContent>
       </Card>
