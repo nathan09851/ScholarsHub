@@ -53,7 +53,7 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
       className={`opacity-0 ${isVisible ? 'animate-fade-in' : ''}`}
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      <Card className={`h-full transition-all duration-300 hover:shadow-xl relative ${plan.popular ? 'border-primary border-2 scale-105' : ''}`}>
+      <Card className={`h-full transition-all duration-300 hover:shadow-xl relative ${plan.popular ? 'border-primary border-2' : ''}`}>
         {plan.popular && (
           <div className="absolute -top-4 left-1/2 -translate-x-1/2">
             <span className="bg-primary text-primary-foreground text-sm font-medium px-4 py-1 rounded-full">
