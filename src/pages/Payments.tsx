@@ -136,6 +136,40 @@ const Payments = () => {
               <PricingCard key={plan.name} plan={plan} index={index} />
             ))}
           </div>
+
+          {/* Payment Confirmation Instructions */}
+          <Card className="mt-12 max-w-2xl mx-auto border-primary/20 bg-primary/5">
+            <CardContent className="pt-6">
+              <h3 className="font-semibold text-lg text-foreground mb-4 flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-primary" />
+                After Payment - Confirm Your Enrollment
+              </h3>
+              <ol className="space-y-3 text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <span className="bg-primary text-primary-foreground text-sm font-medium w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
+                  <span>Complete the UPI payment using the button above</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="bg-primary text-primary-foreground text-sm font-medium w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
+                  <span>Take a screenshot of the payment confirmation</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="bg-primary text-primary-foreground text-sm font-medium w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">3</span>
+                  <span>Send the screenshot on WhatsApp with your child's name and class</span>
+                </li>
+              </ol>
+              <Button variant="outline" size="lg" className="w-full mt-6" asChild>
+                <a
+                  href="https://wa.me/918830368198?text=Hi, I have completed the payment. Please find the screenshot attached. Student Name: ___ Class: ___"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Phone className="mr-2 h-4 w-4" />
+                  Send Payment Screenshot on WhatsApp
+                </a>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
