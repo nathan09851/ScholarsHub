@@ -85,12 +85,10 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
             asChild
           >
             <a
-              href="https://wa.me/918830368198?text=Hi, I want to enroll for the course: ${plan.name} (${plan.price}/month)"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`upi://pay?pa=scholarshubtivim@sbi&pn=Scholars%20Hub&am=${plan.price.replace('₹', '').replace(',', '')}&cu=INR&tn=Course%20Fee%20-%20${encodeURIComponent(plan.name)}`}
             >
               <Smartphone className="mr-2 h-4 w-4" />
-              Pay via UPI
+              Pay ₹{plan.price.replace('₹', '')} via UPI
             </a>
           </Button>
         </CardContent>
