@@ -53,7 +53,7 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
       className={`opacity-0 ${isVisible ? 'animate-fade-in' : ''}`}
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      <Card className={`h-full transition-all duration-300 hover:shadow-xl relative ${plan.popular ? 'border-primary border-2' : ''}`}>
+      <Card className={`h-full flex flex-col transition-all duration-300 hover:shadow-xl relative ${plan.popular ? 'border-primary border-2' : ''}`}>
         {plan.popular && (
           <div className="absolute -top-4 left-1/2 -translate-x-1/2">
             <span className="bg-primary text-primary-foreground text-sm font-medium px-4 py-1 rounded-full">
@@ -69,8 +69,8 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
           </div>
           <p className="text-muted-foreground text-sm mt-2">{plan.description}</p>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <ul className="space-y-3">
+        <CardContent className="flex flex-col flex-1 space-y-6">
+          <ul className="space-y-3 flex-1">
             {plan.features.map((feature) => (
               <li key={feature} className="flex items-center gap-2 text-sm">
                 <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
