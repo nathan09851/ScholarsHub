@@ -277,7 +277,7 @@ const Index = () => {
           <SectionTitle
             eyebrow="Subject coverage"
             id="subjects-heading"
-            subtitle="Comprehensive tuition across 7 subjects, from Classes 1 to 12. Each subject card explains grade fit and expected learning outcomes."
+            subtitle="Comprehensive tuition across 7 subjects, for Classes 5th to 10th only. Each subject card explains grade fit and expected learning outcomes."
             title="Subjects taught with clarity"
           />
 

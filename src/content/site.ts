@@ -151,7 +151,7 @@ export const subjects: SubjectOffering[] = [
       "Concept-first teaching across physics, chemistry, and biology so students understand and remember what they learn.",
     icon: Atom,
     accent: "from-amber-400 to-orange-500",
-    grades: "Classes 5-12",
+    grades: "Classes 5th to 10th only",
     outcomes: [
       "Concept reinforcement",
       "Practical examples",
@@ -164,7 +164,7 @@ export const subjects: SubjectOffering[] = [
       "Step-by-step problem solving that improves confidence, speed, and accuracy across school-level maths.",
     icon: Calculator,
     accent: "from-sky-400 to-cyan-500",
-    grades: "Classes 1-12",
+    grades: "Classes 5th to 10th only",
     outcomes: ["Stronger basics", "Practice support", "Board prep focus"],
   },
   {
@@ -173,7 +173,7 @@ export const subjects: SubjectOffering[] = [
       "Balanced support in grammar, reading, writing, and classroom communication skills.",
     icon: BookOpen,
     accent: "from-emerald-400 to-teal-500",
-    grades: "Classes 1-12",
+    grades: "Classes 5th to 10th only",
     outcomes: ["Writing clarity", "Grammar support", "Reading confidence"],
   },
   {
@@ -182,7 +182,7 @@ export const subjects: SubjectOffering[] = [
       "Language coaching that helps students improve grammar, comprehension, and written expression.",
     icon: Languages,
     accent: "from-fuchsia-400 to-pink-500",
-    grades: "Classes 1-10",
+    grades: "Classes 5th to 10th only",
     outcomes: ["Grammar coverage", "Writing practice", "Comprehension help"],
   },
   {
@@ -191,7 +191,7 @@ export const subjects: SubjectOffering[] = [
       "Regional language support that respects school curriculum needs and local learning context.",
     icon: MessageSquare,
     accent: "from-lime-400 to-green-500",
-    grades: "Classes 1-10",
+    grades: "Classes 5th to 10th only",
     outcomes: ["Language confidence", "Cultural context", "Exam revision"],
   },
   {
@@ -200,7 +200,7 @@ export const subjects: SubjectOffering[] = [
       "Easy-to-follow explanations for maps, climate, places, and real-world understanding.",
     icon: Globe,
     accent: "from-cyan-400 to-blue-500",
-    grades: "Classes 5-12",
+    grades: "Classes 5th to 10th only",
     outcomes: ["Map practice", "Concept retention", "Revision support"],
   },
   {
@@ -209,7 +209,7 @@ export const subjects: SubjectOffering[] = [
       "Structured storytelling and timeline-based teaching to make history easier to understand and recall.",
     icon: Landmark,
     accent: "from-rose-400 to-red-500",
-    grades: "Classes 5-12",
+    grades: "Classes 5th to 10th only",
     outcomes: ["Chapter clarity", "Timeline memory", "Answer framing"],
   },
 ];
@@ -288,7 +288,7 @@ export const faqs = [
   {
     question: "Which classes and subjects are covered?",
     answer:
-      "The centre supports students across Classes 1 to 12 depending on the subject, with current focus on Science, Maths, English, Hindi, Konkani, Geography, and History.",
+      "The centre supports students across Classes 5th to 10th only depending on the subject, with current focus on Science, Maths, English, Hindi, Konkani, Geography, and History.",
   },
   {
     question: "Can parents ask for guidance before enrolling?",

@@ -20,7 +20,7 @@ const Subjects = () => {
     <Layout>
       <SEO
         canonical="/subjects"
-        description="Explore tuition subjects at Schoolars Hub in Goa — Science, Maths, English, Hindi, Konkani, Geography & History. Classes 1–12 with clear grade levels, learning outcomes, and expert guidance."
+        description="Explore tuition subjects at Schoolars Hub in Goa — Science, Maths, English, Hindi, Konkani, Geography & History. Classes 5th to 10th only with clear grade levels, learning outcomes, and expert guidance."
         title="Subjects Offered — Science, Maths, English & More | Schoolars Hub Goa"
       />
 
@@ -30,7 +30,7 @@ const Subjects = () => {
             <div className="surface-panel mesh-border p-7 md:p-8">
               <SectionTitle
                 centered={false}
-                eyebrow="7 subjects, Classes 1–12"
+                eyebrow="7 subjects, Classes 5th to 10th only"
                 id="subjects-hero-heading"
                 subtitle="Compare subjects, see which class levels are covered, and understand what your child will learn — all in one place."
                 title="What subjects we teach"
@@ -45,6 +45,24 @@ const Subjects = () => {
                 <Button className="rounded-full px-7" size="lg" variant="outline" asChild>
                   <Link to="/about">Talk to the team</Link>
                 </Button>
+              </div>
+
+              {/* Subject Briefings */}
+              <div className="mt-10 overflow-hidden rounded-[20px] border border-slate-900/10 bg-slate-50/50 p-5">
+                <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.1em] text-slate-800">
+                  Why these subjects matter
+                </h3>
+                <ul className="grid gap-3 sm:grid-cols-2">
+                  {subjects.map((subject) => (
+                    <li key={subject.title} className="flex items-start gap-2 text-sm text-slate-600">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <div>
+                        <strong className="font-semibold text-slate-800">{subject.title}:</strong>{" "}
+                        <span className="leading-snug">{subject.description}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 

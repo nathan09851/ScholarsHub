@@ -49,7 +49,7 @@ const About = () => {
     <Layout>
       <SEO
         canonical="/about"
-        description="Meet the Schoolars Hub team — experienced educators in Goa providing quality tuition since 2021. Two campuses (Thivim & Corlim), 7 subjects, Classes 1–12. Contact us today."
+        description="Meet the Schoolars Hub team — experienced educators in Goa providing quality tuition since 2021. Two campuses (Thivim & Corlim), 7 subjects, Classes 5th to 10th only. Contact us today."
         jsonLd={localBusinessJsonLd}
         title="About Us — Our Team, Campus & Mission | Schoolars Hub Goa"
       />

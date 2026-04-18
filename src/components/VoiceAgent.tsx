@@ -26,7 +26,7 @@ const VoiceAgent = () => {
         Custom element for ElevenLabs Conversational AI 
         The widget itself manages its position (fixed to bottom right by default)
       */}
-      <elevenlabs-convai agent-id="agent_7801kpha4bnee6k8032z1hajk639"></elevenlabs-convai>
+      <elevenlabs-convai agent-id="5e0227a1-0807-462a-b6c8-2225da1f5654"></elevenlabs-convai>
     </>
   );
 };

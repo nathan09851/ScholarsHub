@@ -24,7 +24,7 @@ const StatsCard = ({ icon: Icon, value, label, delay = 0 }: StatsCardProps) => {
         <Icon className="h-5 w-5" />
       </div>
       <p className="font-serif text-3xl font-bold text-foreground">
-        <AnimatedCounter value={value} delay={delay + 100} />
+        <span>{value}</span>
       </p>
       <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{label}</p>
     </AnimatedSection>
