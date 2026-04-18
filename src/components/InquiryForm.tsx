@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { Loader2, MessageSquare, PhoneCall, ShieldCheck } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -62,6 +62,8 @@ const InquiryForm = ({
       sourcePage,
     },
   });
+  const watchedStudentName = form.watch("studentName");
+  const watchedClassLevel = form.watch("classLevel");
 
   const mutation = useMutation({
     mutationFn: submitInquiry,
@@ -78,11 +80,6 @@ const InquiryForm = ({
       toast.error(error.message || "Unable to send your request right now.");
     },
   });
-
-  const formSummary = useMemo(() => {
-    const values = form.getValues();
-    return `${values.studentName || "Student"} - ${values.classLevel || "Class details pending"}`;
-  }, [form]);
 
   const onSubmit = form.handleSubmit(async (values) => {
     await mutation.mutateAsync({
@@ -324,7 +321,10 @@ const InquiryForm = ({
             <div className="flex flex-col gap-4 rounded-[24px] border border-white/10 bg-slate-950/30 p-4 text-sm text-white/75 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <p className="font-medium text-white">Submission snapshot</p>
-                <p className="mt-1">{formSummary}</p>
+                <p className="mt-1">
+                  {watchedStudentName || "Student"} -{" "}
+                  {watchedClassLevel || "Class details pending"}
+                </p>
               </div>
               <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-amber-100/75">
                 <MessageSquare className="h-4 w-4" />

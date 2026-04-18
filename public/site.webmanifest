@@ -1,0 +1,16 @@
+{
+  "name": "Schoolars Hub",
+  "short_name": "Schoolars Hub",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4ece1",
+  "theme_color": "#f4ece1",
+  "description": "Structured tuition support in Goa with stronger parent trust and clearer enrollment guidance.",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48 32x32 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,203 +1,162 @@
-import Layout from '@/components/Layout';
-import SectionTitle from '@/components/SectionTitle';
-import SEO from '@/components/SEO';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { CheckCircle2, CreditCard, Phone, Building2, Smartphone } from 'lucide-react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  CreditCard,
+  Phone,
+  ShieldCheck,
+  Smartphone,
+} from "lucide-react";
 
-const plans = [
-  {
-    name: 'Class 5th to 8th',
-    price: '₹700',
-    period: '/month',
-    description: 'Perfect for middle school students',
-    features: [
-      'All subjects included',
-      'Regular classes: 3 PM - 6:30 PM',
-      'Exam time: 3 PM - 8 PM',
-      'Study materials included',
-      'Doubt clearing sessions',
-      'Progress reports',
-    ],
-    popular: false,
-  },
-  {
-    name: 'Class 9th to 10th',
-    price: '₹1,000',
-    period: '/month',
-    description: 'Comprehensive coaching for board preparation',
-    features: [
-      'All subjects included',
-      'Regular classes: 3 PM - 6:30 PM',
-      'Exam time: 3 PM - 8 PM',
-      'All study materials',
-      'Weekly doubt sessions',
-      'Monthly progress reports',
-      'Board exam preparation',
-    ],
-    popular: true,
-  },
-];
-
-interface PricingCardProps {
-  plan: typeof plans[0];
-  index: number;
-}
-
-const PricingCard = ({ plan, index }: PricingCardProps) => {
-  const { ref, isVisible } = useScrollAnimation();
-
-  return (
-    <div
-      ref={ref}
-      className={`opacity-0 ${isVisible ? 'animate-fade-in' : ''}`}
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      <Card className={`h-full flex flex-col transition-all duration-300 hover:shadow-xl relative ${plan.popular ? 'border-primary border-2' : ''}`}>
-        {plan.popular && (
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-            <span className="bg-primary text-primary-foreground text-sm font-medium px-4 py-1 rounded-full">
-              Most Popular
-            </span>
-          </div>
-        )}
-        <CardHeader className={`text-center ${plan.popular ? 'pt-8' : ''}`}>
-          <CardTitle className="text-2xl">{plan.name}</CardTitle>
-          <div className="mt-4">
-            <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-            <span className="text-muted-foreground">{plan.period}</span>
-          </div>
-          <p className="text-muted-foreground text-sm mt-2">{plan.description}</p>
-        </CardHeader>
-        <CardContent className="flex flex-col flex-1 space-y-6">
-          <ul className="space-y-3 flex-1">
-            {plan.features.map((feature) => (
-              <li key={feature} className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-                <span className="text-muted-foreground">{feature}</span>
-              </li>
-            ))}
-          </ul>
-          <Button
-            variant={plan.popular ? 'hero' : 'default'}
-            size="lg"
-            className="w-full"
-            onClick={() => {
-              const amount = plan.price.replace('₹', '').replace(',', '');
-              const upiLink = `upi://pay?pa=scholarshubtivim@sbi&pn=Scholars%20Hub&am=${amount}&cu=INR&tn=Course%20Fee%20-%20${encodeURIComponent(plan.name)}`;
-              window.location.href = upiLink;
-            }}
-          >
-            <Smartphone className="mr-2 h-4 w-4" />
-            Pay {plan.price} via UPI
-          </Button>
-        </CardContent>
-      </Card>
-    </div>
-  );
-};
-
-const paymentMethods = [
-  {
-    icon: Smartphone,
-    title: 'UPI Payment',
-    description: 'Pay instantly via Google Pay, PhonePe, Paytm, or any UPI app.',
-  },
-  {
-    icon: Phone,
-    title: 'WhatsApp',
-    description: 'Contact us on WhatsApp for payment details and enrollment.',
-  },
-  {
-    icon: Building2,
-    title: 'Bank Transfer',
-    description: 'Direct bank transfer to our account. Details provided on request.',
-  },
-];
+import InquiryForm from "@/components/InquiryForm";
+import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
+import SectionTitle from "@/components/SectionTitle";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { feePlans, siteConfig } from "@/content/site";
 
 const Payments = () => {
   return (
     <Layout>
       <SEO
-        title="Tuition Fees & Payments | Schoolars Hub Goa"
-        description="Affordable tuition fees: ₹700/month (Class 5-8), ₹1,000/month (Class 9-10). Pay instantly via UPI, WhatsApp or bank transfer."
         canonical="/payments"
+        description="Review Schoolars Hub fee plans, payment steps, and safer enrollment follow-up details."
+        title="Fees and Payments | Schoolars Hub"
       />
-      {/* Hero */}
-      <section className="py-20 bg-card">
-        <div className="container px-4">
-          <SectionTitle
-            title="Pricing & Payments"
-            subtitle="Affordable plans designed to provide quality education. Choose the plan that best fits your needs."
-          />
-        </div>
-      </section>
 
-      {/* Pricing Plans */}
-      <section className="py-20">
+      <section className="section-shell pt-8">
         <div className="container px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {plans.map((plan, index) => (
-              <PricingCard key={plan.name} plan={plan} index={index} />
-            ))}
+          <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+            <div className="surface-panel mesh-border p-7 md:p-8">
+              <SectionTitle
+                centered={false}
+                eyebrow="Fees and payment"
+                subtitle="This page is now designed to remove friction: clear plans, direct payment flow, and a stronger post-payment confirmation path."
+                title="Transparent monthly plans with simpler payment guidance"
+              />
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                <Card className="rounded-[24px] border-slate-900/8 bg-slate-50/70 shadow-none">
+                  <CardContent className="space-y-3 p-5">
+                    <ShieldCheck className="h-5 w-5 text-amber-500" />
+                    <p className="font-semibold text-foreground">Safer intake</p>
+                    <p className="text-sm text-muted-foreground">
+                      Parents can ask before they pay.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="rounded-[24px] border-slate-900/8 bg-slate-50/70 shadow-none">
+                  <CardContent className="space-y-3 p-5">
+                    <Smartphone className="h-5 w-5 text-cyan-600" />
+                    <p className="font-semibold text-foreground">UPI ready</p>
+                    <p className="text-sm text-muted-foreground">
+                      Quick mobile payment support.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="rounded-[24px] border-slate-900/8 bg-slate-50/70 shadow-none">
+                  <CardContent className="space-y-3 p-5">
+                    <Phone className="h-5 w-5 text-emerald-600" />
+                    <p className="font-semibold text-foreground">Human follow-up</p>
+                    <p className="text-sm text-muted-foreground">
+                      WhatsApp confirmation stays available.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            <InquiryForm
+              defaultIntent="fees"
+              description="Use this form if you want fee details, class guidance, or help choosing the right plan before making payment."
+              sourcePage="payments-page"
+              title="Ask before paying"
+            />
           </div>
-
-          {/* Payment Confirmation Instructions */}
-          <Card className="mt-12 max-w-2xl mx-auto border-primary/20 bg-primary/5">
-            <CardContent className="pt-6">
-              <h3 className="font-semibold text-lg text-foreground mb-4 flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-primary" />
-                After Payment - Confirm Your Enrollment
-              </h3>
-              <ol className="space-y-3 text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <span className="bg-primary text-primary-foreground text-sm font-medium w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
-                  <span>Complete the UPI payment using the button above</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="bg-primary text-primary-foreground text-sm font-medium w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
-                  <span>Take a screenshot of the payment confirmation</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="bg-primary text-primary-foreground text-sm font-medium w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">3</span>
-                  <span>Send the screenshot on WhatsApp with your child's name and class</span>
-                </li>
-              </ol>
-              <Button variant="outline" size="lg" className="w-full mt-6" asChild>
-                <a
-                  href="https://wa.me/918830368198?text=Hi, I have completed the payment. Please find the screenshot attached. Student Name: ___ Class: ___"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Phone className="mr-2 h-4 w-4" />
-                  Send Payment Screenshot on WhatsApp
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
         </div>
       </section>
 
-      {/* Payment Methods */}
-      <section className="py-20 bg-card">
+      <section className="section-shell">
         <div className="container px-4">
           <SectionTitle
-            title="Payment Methods"
-            subtitle="We offer multiple convenient payment options for your ease."
+            eyebrow="Plans"
+            subtitle="The plans are now easier to compare, more explicit about who they are for, and less likely to create confusion on mobile."
+            title="Monthly fee plans"
           />
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-4xl mx-auto">
-            {paymentMethods.map((method, index) => {
-              const Icon = method.icon;
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            {feePlans.map((plan) => {
+              const amount = plan.monthlyFee.replace("INR ", "").replace(",", "");
+              const paymentUrl = `upi://pay?pa=${siteConfig.upiId}&pn=${encodeURIComponent(
+                siteConfig.brandName,
+              )}&am=${amount}&cu=INR&tn=${encodeURIComponent(
+                `${plan.name} monthly fee`,
+              )}`;
+
               return (
-                <Card key={method.title} className="text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <CardContent className="pt-8 space-y-4">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                      <Icon className="h-8 w-8 text-primary" />
+                <Card
+                  className={`mesh-border rounded-[30px] border-white/50 bg-white/88 shadow-lg ${
+                    plan.popular ? "ring-2 ring-amber-300/60" : ""
+                  }`}
+                  key={plan.name}
+                >
+                  <CardHeader className="space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div>
+                        <div className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+                          {plan.studentRange}
+                        </div>
+                        <CardTitle className="mt-2 font-serif text-3xl font-semibold text-foreground">
+                          {plan.name}
+                        </CardTitle>
+                      </div>
+                      {plan.popular ? (
+                        <div className="rounded-full bg-amber-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-amber-800">
+                          Most popular
+                        </div>
+                      ) : null}
                     </div>
-                    <h3 className="font-semibold text-lg text-foreground">{method.title}</h3>
-                    <p className="text-muted-foreground text-sm">{method.description}</p>
+                    <div>
+                      <p className="font-serif text-5xl font-semibold text-foreground">
+                        {plan.monthlyFee}
+                      </p>
+                      <p className="mt-2 text-sm leading-7 text-muted-foreground">
+                        {plan.description}
+                      </p>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <ul className="space-y-3">
+                      {plan.highlights.map((highlight) => (
+                        <li
+                          className="flex items-center gap-3 text-sm text-slate-700"
+                          key={highlight}
+                        >
+                          <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <Button className="rounded-2xl" size="lg" variant="hero" asChild>
+                        <a href={paymentUrl}>
+                          <Smartphone className="h-4 w-4" />
+                          Pay via UPI
+                        </a>
+                      </Button>
+                      <Button className="rounded-2xl" size="lg" variant="outline" asChild>
+                        <a
+                          href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+                            `Hi, I would like help with the ${plan.name} fee plan.`,
+                          )}`}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Ask on WhatsApp
+                        </a>
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               );
@@ -206,26 +165,62 @@ const Payments = () => {
         </div>
       </section>
 
-      {/* Contact for Custom Plans */}
-      <section className="py-20 bg-primary">
-        <div className="container px-4 text-center">
-          <div className="max-w-2xl mx-auto space-y-6">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-foreground">
-              Need a Custom Plan?
-            </h2>
-            <p className="text-primary-foreground/80 text-lg">
-              Contact us for special group discounts, sibling packages, or custom learning plans tailored to your specific requirements.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="secondary" size="xl">
-                <Phone className="mr-2 h-5 w-5" />
-                Call Us: +91 88303 68198
-              </Button>
-              <Button variant="secondary" size="xl">
-                <Phone className="mr-2 h-5 w-5" />
-                Call Us: +91 95793 39227
-              </Button>
-            </div>
+      <section className="section-shell">
+        <div className="container px-4">
+          <Card className="mesh-border rounded-[32px] border-white/50 bg-white/90 shadow-lg">
+            <CardContent className="grid gap-8 p-7 md:grid-cols-[0.95fr_1.05fr] md:p-8">
+              <div className="space-y-4">
+                <div className="section-eyebrow">After payment</div>
+                <h2 className="font-serif text-4xl font-semibold text-foreground">
+                  A clearer confirmation path
+                </h2>
+                <p className="text-sm leading-7 text-muted-foreground">
+                  One of the practical experience fixes is that payment does not
+                  become a dead end. The next steps are now explicit and easier to
+                  follow from a phone.
+                </p>
+              </div>
+
+              <div className="grid gap-4">
+                {[
+                  "Complete the UPI payment for the selected plan.",
+                  "Save the payment confirmation screenshot.",
+                  "Send the screenshot on WhatsApp with the student's name and class.",
+                  "Use the inquiry form if you want fee help before payment.",
+                ].map((step, index) => (
+                  <div
+                    className="flex items-start gap-4 rounded-[24px] border border-slate-900/8 bg-slate-50/70 p-5"
+                    key={step}
+                  >
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-sm font-semibold text-white">
+                      {index + 1}
+                    </div>
+                    <p className="text-sm leading-7 text-slate-700">{step}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Button className="rounded-full px-7" size="lg" variant="hero" asChild>
+              <a
+                href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+                  "Hi, I have completed the payment. Student name: ___ Class: ___",
+                )}`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <Phone className="h-4 w-4" />
+                Send payment screenshot
+              </a>
+            </Button>
+            <Button className="rounded-full px-7" size="lg" variant="outline" asChild>
+              <a href={`tel:${siteConfig.phones[0]}`}>
+                <CreditCard className="h-4 w-4" />
+                Call for payment help
+              </a>
+            </Button>
           </div>
         </div>
       </section>

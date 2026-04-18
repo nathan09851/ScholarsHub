@@ -1,73 +1,87 @@
-# Welcome to your Lovable project
+# Schoolars Hub Website
 
-## Project info
+Schoolars Hub is a Vite + React + TypeScript marketing and inquiry site for a Goa-based tuition centre. This version focuses on three goals:
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+1. A stronger UI and UX for parents on desktop and mobile
+2. A safer inquiry and enrollment path backed by Supabase
+3. A cleaner path from the current SPA into a more mature platform architecture
 
-## How can I edit this code?
+## Current stack
 
-There are several ways of editing your application.
+- Frontend: Vite, React, TypeScript, Tailwind, shadcn/ui
+- Data and backend integration: Supabase client + Edge Functions
+- Validation: Zod + React Hook Form
+- Async state: TanStack Query
+- Testing: Vitest + Testing Library
+- CI: GitHub Actions
 
-**Use Lovable**
+## Local development
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm ci
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Production checks:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npx tsc --noEmit
+npm run lint
+npm run test
+npm run build
+```
 
-**Use GitHub Codespaces**
+## Environment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Copy `.env.example` to `.env` and set:
 
-## What technologies are used for this project?
+- `VITE_SITE_URL`
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_PUBLISHABLE_KEY`
+- `VITE_SUPABASE_INQUIRY_FUNCTION`
 
-This project is built with:
+## Secure inquiry backend
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The repo now includes:
 
-## How can I deploy this project?
+- `supabase/migrations/202604190145_create_inquiry_requests.sql`
+- `supabase/functions/submit-inquiry/index.ts`
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+The intended production flow is:
 
-## Can I connect a custom domain to my Lovable project?
+1. Frontend validates form input with Zod.
+2. The client invokes the `submit-inquiry` edge function.
+3. The edge function validates again, checks basic request limits, fingerprints traffic, and inserts using the service role.
+4. The `inquiry_requests` table stays locked behind RLS with no direct public access.
 
-Yes, you can!
+### Deploy the Supabase pieces
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Run these after authenticating with Supabase CLI and linking the project:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```bash
+supabase db push
+supabase functions deploy submit-inquiry
+```
+
+Recommended secrets for the function:
+
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `ALLOWED_ORIGINS`
+
+## Security improvements included
+
+- CSP, referrer policy, permissions policy, and HSTS-ready header file
+- Validated inquiry submission with server-side revalidation
+- RLS-locked storage table for intake requests
+- Basic rate limiting in the edge function
+- Reduced reliance on vague client-only contact flows
+
+## Architecture direction
+
+The codebase is still a Vite SPA today, but it now includes a cleaner stepping stone toward the larger platform target:
+
+- Phase 1: Hardened SPA + Supabase edge backend + modular service layer
+- Phase 2: Next.js SSR frontend + modular Node backend or expanded edge/service split
+- Phase 3: Service extraction, cache tier, and deeper observability
+
+See [docs/platform-roadmap.md](./docs/platform-roadmap.md) for the fuller plan.
