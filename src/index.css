@@ -322,6 +322,20 @@
   .icon-bounce:hover {
     animation: icon-bounce-anim 0.4s ease;
   }
+
+  /* ── ElevenLabs Widget Overrides ── */
+  elevenlabs-convai {
+    /* Reduce base font size for the entire widget and its shadow DOM components */
+    --elevenlabs-widget-font-size: 14px;
+    font-size: 14px !important;
+    
+    /* Ensure the widget stays within a professional bounds on smaller screens */
+    --elevenlabs-convai-widget-width: 360px;
+    --elevenlabs-convai-widget-height: 520px;
+    
+    /* Higher z-index to stay above other UI elements */
+    z-index: 9999;
+  }
 }
 
 /* ── Keyframes ── */
