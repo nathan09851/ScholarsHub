@@ -1,14 +1,13 @@
 import { useEffect } from "react";
 
 /**
- * ElevenLabs AI Voice Agent Widget
- * Integration for Schoolars Hub
+ * ElevenLabs AI Voice Agent Widget (Official Widget Embed)
  */
 const VoiceAgent = () => {
   useEffect(() => {
     // Add the ElevenLabs widget script dynamically
     const script = document.createElement("script");
-    script.src = "https://elevenlabs.io/convai-widget/index.js";
+    script.src = "https://unpkg.com/@elevenlabs/convai-widget-embed";
     script.async = true;
     script.type = "text/javascript";
     document.body.appendChild(script);
@@ -22,13 +21,13 @@ const VoiceAgent = () => {
   }, []);
 
   return (
-    <div className="voice-agent-container">
+    <>
       {/* 
         Custom element for ElevenLabs Conversational AI 
-        Agent ID: agent_7801kpha4bnee6k8032z1hajk639
+        The widget itself manages its position (fixed to bottom right by default)
       */}
       <elevenlabs-convai agent-id="agent_7801kpha4bnee6k8032z1hajk639"></elevenlabs-convai>
-    </div>
+    </>
   );
 };
 
