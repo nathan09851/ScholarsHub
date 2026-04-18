@@ -98,12 +98,12 @@ const InquiryForm = ({
         .join(" ")}
     >
       <CardHeader className="space-y-3 border-b border-white/10 bg-slate-950/35">
-        <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-amber-100/80">
+        <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-amber-200">
           <ShieldCheck className="h-3.5 w-3.5" />
           Secure inquiry flow
         </div>
         <CardTitle className="font-serif text-3xl text-white">{title}</CardTitle>
-        <p className="max-w-2xl text-sm leading-6 text-white/72">{description}</p>
+        <p className="max-w-2xl text-sm leading-6 text-white/82">{description}</p>
       </CardHeader>
 
       <CardContent className="space-y-6 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-6 sm:p-8">
@@ -153,7 +153,7 @@ const InquiryForm = ({
 
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-2">
-                <Label className="text-white" htmlFor="fullName">
+                <Label className="text-sm font-medium text-white/95" htmlFor="fullName">
                   Parent or guardian name
                 </Label>
                 <Input
@@ -168,7 +168,7 @@ const InquiryForm = ({
               </div>
 
               <div className="space-y-2">
-                <Label className="text-white" htmlFor="studentName">
+                <Label className="text-sm font-medium text-white/95" htmlFor="studentName">
                   Student name
                 </Label>
                 <Input
@@ -183,7 +183,7 @@ const InquiryForm = ({
               </div>
 
               <div className="space-y-2">
-                <Label className="text-white" htmlFor="phone">
+                <Label className="text-sm font-medium text-white/95" htmlFor="phone">
                   Phone number
                 </Label>
                 <Input
@@ -199,7 +199,7 @@ const InquiryForm = ({
               </div>
 
               <div className="space-y-2">
-                <Label className="text-white" htmlFor="email">
+                <Label className="text-sm font-medium text-white/95" htmlFor="email">
                   Email address
                 </Label>
                 <Input
@@ -215,7 +215,7 @@ const InquiryForm = ({
               </div>
 
               <div className="space-y-2">
-                <Label className="text-white" htmlFor="classLevel">
+                <Label className="text-sm font-medium text-white/95" htmlFor="classLevel">
                   Student class
                 </Label>
                 <Input
@@ -230,7 +230,7 @@ const InquiryForm = ({
               </div>
 
               <div className="space-y-2">
-                <Label className="text-white" htmlFor="subjectInterest">
+                <Label className="text-sm font-medium text-white/95" htmlFor="subjectInterest">
                   Subject support needed
                 </Label>
                 <Input
@@ -246,7 +246,7 @@ const InquiryForm = ({
             </div>
 
             <fieldset className="space-y-3">
-              <legend className="text-sm font-medium text-white">
+              <legend className="text-sm font-medium text-white/95">
                 What kind of help do you want first?
               </legend>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -318,17 +318,17 @@ const InquiryForm = ({
               </p>
             </div>
 
-            <div className="flex flex-col gap-4 rounded-[24px] border border-white/10 bg-slate-950/30 p-4 text-sm text-white/75 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-4 rounded-[24px] border border-white/10 bg-slate-950/30 p-4 text-sm text-white/80 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <p className="font-medium text-white">Submission snapshot</p>
+                <p className="font-medium text-white/95">Submission summary</p>
                 <p className="mt-1">
                   {watchedStudentName || "Student"} -{" "}
                   {watchedClassLevel || "Class details pending"}
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-amber-100/75">
+              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-amber-200">
                 <MessageSquare className="h-4 w-4" />
-                Zod validated + edge function ready
+                Preview before sending
               </div>
             </div>
 

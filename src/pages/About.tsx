@@ -20,27 +20,27 @@ import { localBusinessJsonLd } from "@/lib/structuredData";
 const team = [
   {
     name: "Shamina Shaikh",
-    role: "Founder and Director",
+    role: "Founder & Director",
     description:
-      "Leads the centre with a parent-facing, operations-aware approach to academic support.",
+      "Leads the centre with a parent-first approach and deep operational understanding of academic support.",
   },
   {
     name: "Avita",
     role: "Mathematics Faculty",
     description:
-      "Focuses on strengthening problem solving, step-by-step reasoning, and exam preparation.",
+      "Specialises in problem-solving, step-by-step reasoning, and exam preparation strategies.",
   },
   {
     name: "Marina",
     role: "Academic Faculty",
     description:
-      "Supports students with concept reinforcement and a calm classroom rhythm.",
+      "Supports students with concept reinforcement and a calm, structured classroom rhythm.",
   },
   {
     name: "Senha",
     role: "Teaching Faculty",
     description:
-      "Helps students stay consistent with lessons, revisions, and day-to-day academic confidence.",
+      "Helps students stay consistent with daily lessons, revision practice, and academic confidence.",
   },
 ];
 
@@ -49,44 +49,45 @@ const About = () => {
     <Layout>
       <SEO
         canonical="/about"
-        description="Learn how Schoolars Hub supports students and families across Goa with clearer operations, stronger trust signals, and a more secure inquiry flow."
+        description="Meet the Schoolars Hub team — experienced educators in Goa providing quality tuition since 2021. Two campuses (Thivim & Corlim), 7 subjects, Classes 1–12. Contact us today."
         jsonLd={localBusinessJsonLd}
-        title="About Schoolars Hub | Built for stronger parent trust and student support"
+        title="About Us — Our Team, Campus & Mission | Schoolars Hub Goa"
       />
 
-      <section className="section-shell pt-8">
+      <section className="section-shell pt-8" aria-labelledby="about-hero-heading">
         <div className="container px-4">
           <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
             <div className="surface-panel mesh-border p-7 md:p-8">
               <SectionTitle
                 centered={false}
-                eyebrow="About the centre"
-                subtitle="This page now explains how the centre works, what families can expect, and why the experience feels more mature and trustworthy."
-                title="A tuition centre that is growing in maturity, not just visibility"
+                eyebrow="Est. 2021 · Goa"
+                id="about-hero-heading"
+                subtitle="Schoolars Hub was started to give families a more reliable, transparent tuition experience — from clear fee plans to genuine follow-up."
+                title="A coaching centre built around families"
               />
 
               <div className="mt-8 grid gap-4 md:grid-cols-2">
-                <Card className="rounded-[24px] border-slate-900/8 bg-slate-50/70 shadow-none">
-                  <CardContent className="space-y-3 p-5">
-                    <ShieldCheck className="h-5 w-5 text-amber-500" />
+                <Card className="rounded-[22px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                  <CardContent className="space-y-2 p-5">
+                    <ShieldCheck aria-hidden="true" className="h-5 w-5 text-amber-500" />
                     <h3 className="font-semibold text-foreground">
-                      Better parent confidence
+                      Parent confidence
                     </h3>
-                    <p className="text-sm leading-7 text-muted-foreground">
-                      The digital experience is now clearer about timings, fees,
-                      subjects, and the first contact path.
+                    <p className="text-sm leading-7 text-slate-600">
+                      Clear timings, transparent fees, and a structured inquiry
+                      process so families always know what to expect.
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="rounded-[24px] border-slate-900/8 bg-slate-50/70 shadow-none">
-                  <CardContent className="space-y-3 p-5">
-                    <Users className="h-5 w-5 text-cyan-600" />
+                <Card className="rounded-[22px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                  <CardContent className="space-y-2 p-5">
+                    <Users aria-hidden="true" className="h-5 w-5 text-cyan-600" />
                     <h3 className="font-semibold text-foreground">
-                      More operational clarity
+                      Small-group teaching
                     </h3>
-                    <p className="text-sm leading-7 text-muted-foreground">
-                      Families can now understand what happens after inquiry,
-                      enrollment, and payment without confusion.
+                    <p className="text-sm leading-7 text-slate-600">
+                      Focused batches so every student gets the attention they
+                      need to improve and stay on track.
                     </p>
                   </CardContent>
                 </Card>
@@ -97,7 +98,12 @@ const About = () => {
                   <Link to="/payments">See fee plans</Link>
                 </Button>
                 <Button className="rounded-full px-7" size="lg" variant="outline" asChild>
-                  <a href={siteConfig.googleReviewsUrl} rel="noreferrer" target="_blank">
+                  <a
+                    href={siteConfig.googleReviewsUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                    aria-label="Read Google reviews (opens in new tab)"
+                  >
                     Read Google reviews
                   </a>
                 </Button>
@@ -106,7 +112,7 @@ const About = () => {
 
             <InquiryForm
               defaultIntent="callback"
-              description="Use this form if you want to speak directly with the team about class fit, campus preference, or enrollment questions."
+              description="Want to speak with someone directly? Share your details and we'll call you back."
               sourcePage="about-page"
               title="Talk to the team"
             />
@@ -114,24 +120,34 @@ const About = () => {
         </div>
       </section>
 
-      <section className="section-shell">
+      <section className="section-shell" aria-labelledby="values-heading">
         <div className="container px-4">
-          <div className="grid gap-6 lg:grid-cols-3">
+          <SectionTitle
+            eyebrow="What we stand for"
+            id="values-heading"
+            title="Why families choose us"
+            subtitle="Three principles that guide everything at Schoolars Hub."
+          />
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {trustSignals.map((signal) => {
               const Icon = signal.icon;
               return (
                 <Card
-                  className="mesh-border rounded-[28px] border-white/50 bg-white/88 shadow-lg"
+                  className="mesh-border rounded-[24px] border-white/50 bg-white/88 shadow-md"
                   key={signal.title}
                 >
-                  <CardContent className="space-y-4 p-6">
-                    <div className="inline-flex rounded-2xl bg-slate-950 p-3 text-amber-300">
+                  <CardContent className="space-y-3 p-6">
+                    <div
+                      aria-hidden="true"
+                      className="inline-flex rounded-2xl bg-slate-950 p-3 text-amber-300"
+                    >
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h3 className="font-serif text-2xl font-semibold text-foreground">
+                    <h3 className="font-serif text-xl font-semibold text-foreground">
                       {signal.title}
                     </h3>
-                    <p className="text-sm leading-7 text-muted-foreground">
+                    <p className="text-sm leading-7 text-slate-600">
                       {signal.description}
                     </p>
                   </CardContent>
@@ -142,36 +158,40 @@ const About = () => {
         </div>
       </section>
 
-      <section className="section-shell">
+      <section className="section-shell" aria-labelledby="team-heading">
         <div className="container px-4">
           <SectionTitle
-            eyebrow="Team"
-            subtitle="The page now keeps leadership and faculty presentation consistent, which builds more trust than vague team listings."
-            title="The people families meet behind the brand"
+            eyebrow="Our team"
+            id="team-heading"
+            subtitle="The people behind Schoolars Hub who work directly with students and families."
+            title="Meet the faculty"
           />
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {team.map((member) => (
               <Card
-                className="mesh-border rounded-[28px] border-white/50 bg-white/88 shadow-lg"
+                className="mesh-border rounded-[24px] border-white/50 bg-white/88 shadow-md"
                 key={member.name}
               >
-                <CardContent className="space-y-5 p-6 text-center">
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-orange-500 text-2xl font-bold text-slate-950 shadow-sm">
+                <CardContent className="space-y-4 p-6 text-center">
+                  <div
+                    aria-hidden="true"
+                    className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-orange-500 text-2xl font-bold text-slate-950 shadow-sm"
+                  >
                     {member.name
                       .split(" ")
                       .map((part) => part[0])
                       .join("")}
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl font-semibold text-foreground">
+                    <h3 className="font-serif text-xl font-semibold text-foreground">
                       {member.name}
                     </h3>
-                    <p className="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-secondary">
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
                       {member.role}
                     </p>
                   </div>
-                  <p className="text-sm leading-7 text-muted-foreground">
+                  <p className="text-sm leading-7 text-slate-600">
                     {member.description}
                   </p>
                 </CardContent>
@@ -181,65 +201,73 @@ const About = () => {
         </div>
       </section>
 
-      <section className="section-shell">
+      <section className="section-shell" aria-labelledby="contact-heading">
         <div className="container px-4">
-          <Card className="mesh-border rounded-[32px] border-white/50 bg-white/90 shadow-lg">
+          <Card className="mesh-border rounded-[28px] border-white/50 bg-white/90 shadow-lg">
             <CardContent className="grid gap-8 p-7 md:grid-cols-[0.95fr_1.05fr] md:p-8">
-              <div className="space-y-5">
-                <div className="section-eyebrow">Operational details</div>
-                <h2 className="font-serif text-4xl font-semibold text-foreground">
-                  Clear contact details and schedules matter
+              <div className="space-y-4">
+                <div className="section-eyebrow">Contact & hours</div>
+                <h2
+                  id="contact-heading"
+                  className="font-serif text-3xl font-semibold text-foreground"
+                >
+                  Get in touch
                 </h2>
-                <p className="text-sm leading-7 text-muted-foreground">
-                  One of the practical UX fixes was to make key operating details
-                  easier to scan on mobile and desktop without burying them in a
-                  paragraph.
+                <p className="text-sm leading-7 text-slate-600">
+                  Reach us by phone, email, or visit either campus during class
+                  hours. We're always happy to talk with parents.
                 </p>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 {siteConfig.phones.map((phone) => (
-                  <Card className="rounded-[24px] border-slate-900/8 bg-slate-50/70 shadow-none" key={phone}>
-                    <CardContent className="space-y-3 p-5">
-                      <Phone className="h-5 w-5 text-amber-500" />
+                  <Card
+                    className="rounded-[20px] border-slate-900/8 bg-slate-50/80 shadow-none"
+                    key={phone}
+                  >
+                    <CardContent className="space-y-2 p-5">
+                      <Phone aria-hidden="true" className="h-5 w-5 text-amber-500" />
                       <h3 className="font-semibold text-foreground">Phone</h3>
-                      <a className="text-sm text-muted-foreground" href={`tel:${phone}`}>
+                      <a
+                        className="text-sm font-medium text-slate-700 underline-offset-2 hover:underline"
+                        href={`tel:${phone}`}
+                      >
                         {phone}
                       </a>
                     </CardContent>
                   </Card>
                 ))}
-                <Card className="rounded-[24px] border-slate-900/8 bg-slate-50/70 shadow-none">
-                  <CardContent className="space-y-3 p-5">
-                    <Mail className="h-5 w-5 text-cyan-600" />
+                <Card className="rounded-[20px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                  <CardContent className="space-y-2 p-5">
+                    <Mail aria-hidden="true" className="h-5 w-5 text-cyan-600" />
                     <h3 className="font-semibold text-foreground">Email</h3>
                     <a
-                      className="text-sm text-muted-foreground"
+                      className="text-sm font-medium text-slate-700 underline-offset-2 hover:underline"
                       href={`mailto:${siteConfig.email}`}
                     >
                       {siteConfig.email}
                     </a>
                   </CardContent>
                 </Card>
-                <Card className="rounded-[24px] border-slate-900/8 bg-slate-50/70 shadow-none">
-                  <CardContent className="space-y-3 p-5">
-                    <Clock3 className="h-5 w-5 text-emerald-600" />
+                <Card className="rounded-[20px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                  <CardContent className="space-y-2 p-5">
+                    <Clock3 aria-hidden="true" className="h-5 w-5 text-emerald-600" />
                     <h3 className="font-semibold text-foreground">Class hours</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-slate-700">
                       Regular: {siteConfig.timings.regular}
                     </p>
-                    <p className="text-sm text-muted-foreground">
-                      Exam time: {siteConfig.timings.exam}
+                    <p className="text-sm text-slate-700">
+                      Exams: {siteConfig.timings.exam}
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="rounded-[24px] border-slate-900/8 bg-slate-50/70 shadow-none">
-                  <CardContent className="space-y-3 p-5">
-                    <MapPin className="h-5 w-5 text-rose-500" />
-                    <h3 className="font-semibold text-foreground">Locations</h3>
+                <Card className="rounded-[20px] border-slate-900/8 bg-slate-50/80 shadow-none sm:col-span-2">
+                  <CardContent className="space-y-2 p-5">
+                    <MapPin aria-hidden="true" className="h-5 w-5 text-rose-500" />
+                    <h3 className="font-semibold text-foreground">Campus locations</h3>
                     {campusLocations.map((campus) => (
-                      <p className="text-sm text-muted-foreground" key={campus.name}>
-                        {campus.name}, {campus.area}
+                      <p className="text-sm text-slate-700" key={campus.name}>
+                        <strong>{campus.name}</strong> — {campus.area}
                       </p>
                     ))}
                   </CardContent>

@@ -20,25 +20,26 @@ const Subjects = () => {
     <Layout>
       <SEO
         canonical="/subjects"
-        description="Explore subject support at Schoolars Hub across Science, Maths, English, Hindi, Konkani, Geography, and History."
-        title="Subjects at Schoolars Hub | Structured support from Classes 1 to 12"
+        description="Explore tuition subjects at Schoolars Hub in Goa — Science, Maths, English, Hindi, Konkani, Geography & History. Classes 1–12 with clear grade levels, learning outcomes, and expert guidance."
+        title="Subjects Offered — Science, Maths, English & More | Schoolars Hub Goa"
       />
 
-      <section className="section-shell pt-8">
+      <section className="section-shell pt-8" aria-labelledby="subjects-hero-heading">
         <div className="container px-4">
           <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
             <div className="surface-panel mesh-border p-7 md:p-8">
               <SectionTitle
                 centered={false}
-                eyebrow="Subjects and outcomes"
-                subtitle="This page is now structured to help parents compare subjects, class levels, and outcomes without digging through scattered sections."
-                title="What students can study with us"
+                eyebrow="7 subjects, Classes 1–12"
+                id="subjects-hero-heading"
+                subtitle="Compare subjects, see which class levels are covered, and understand what your child will learn — all in one place."
+                title="What subjects we teach"
               />
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button className="rounded-full px-7" size="lg" variant="hero" asChild>
                   <Link to="/payments">
                     View fee plans
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight aria-hidden="true" className="ml-1 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button className="rounded-full px-7" size="lg" variant="outline" asChild>
@@ -49,7 +50,7 @@ const Subjects = () => {
 
             <InquiryForm
               defaultIntent="demo"
-              description="Use this form if you are unsure which subject to prioritize first. We can guide you based on class level and current academic needs."
+              description="Not sure which subject to start with? Tell us the class level and we'll guide you."
               sourcePage="subjects-page"
               title="Need subject guidance?"
             />
@@ -57,41 +58,49 @@ const Subjects = () => {
         </div>
       </section>
 
-      <section className="section-shell">
+      <section className="section-shell" aria-labelledby="subject-list-heading">
         <div className="container px-4">
-          <div className="grid gap-6 lg:grid-cols-2">
+          <SectionTitle
+            eyebrow="All subjects"
+            id="subject-list-heading"
+            title="Explore every subject we cover"
+            subtitle="Each card shows the grade range, description, and expected learning outcomes."
+          />
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {subjects.map((subject) => {
               const Icon = subject.icon;
 
               return (
                 <Card
-                  className="mesh-border rounded-[30px] border-white/50 bg-white/88 shadow-lg"
+                  className="mesh-border rounded-[28px] border-white/50 bg-white/88 shadow-md"
                   key={subject.title}
                 >
-                  <CardHeader className="space-y-5">
+                  <CardHeader className="space-y-4">
                     <div className="flex flex-wrap items-start justify-between gap-4">
                       <div
+                        aria-hidden="true"
                         className={`inline-flex rounded-2xl bg-gradient-to-br ${subject.accent} p-3 text-slate-950 shadow-sm`}
                       >
                         <Icon className="h-6 w-6" />
                       </div>
-                      <div className="rounded-full bg-slate-900/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
+                      <div className="rounded-full bg-slate-900/6 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
                         {subject.grades}
                       </div>
                     </div>
-                    <div className="space-y-3">
-                      <CardTitle className="font-serif text-3xl font-semibold text-foreground">
+                    <div className="space-y-2">
+                      <CardTitle className="font-serif text-2xl font-semibold text-foreground">
                         {subject.title}
                       </CardTitle>
-                      <p className="text-sm leading-7 text-muted-foreground">
+                      <p className="text-sm leading-7 text-slate-600">
                         {subject.description}
                       </p>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-5">
-                    <div className="rounded-[24px] border border-slate-900/8 bg-slate-50/70 p-5">
+                    <div className="rounded-[20px] border border-slate-900/8 bg-slate-50/80 p-5">
                       <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-                        Outcomes to expect
+                        Learning outcomes
                       </p>
                       <ul className="mt-4 space-y-3">
                         {subject.outcomes.map((outcome) => (
@@ -99,7 +108,7 @@ const Subjects = () => {
                             className="flex items-center gap-3 text-sm text-slate-700"
                             key={outcome}
                           >
-                            <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                            <CheckCircle2 aria-hidden="true" className="h-4 w-4 flex-shrink-0 text-emerald-500" />
                             {outcome}
                           </li>
                         ))}
@@ -107,7 +116,7 @@ const Subjects = () => {
                     </div>
 
                     <Button className="w-full rounded-2xl" size="lg" variant="outline" asChild>
-                      <Link to="/payments">Ask about {subject.title}</Link>
+                      <Link to="/payments">Enroll for {subject.title}</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -117,51 +126,47 @@ const Subjects = () => {
         </div>
       </section>
 
-      <section className="section-shell">
+      <section className="section-shell" aria-labelledby="subject-help-heading">
         <div className="container px-4">
-          <Card className="mesh-border rounded-[32px] border-white/50 bg-white/90 shadow-lg">
+          <Card className="mesh-border rounded-[28px] border-white/50 bg-white/90 shadow-lg">
             <CardContent className="grid gap-8 p-7 md:grid-cols-[0.9fr_1.1fr] md:p-8">
               <div className="space-y-4">
-                <div className="section-eyebrow">Selection help</div>
-                <h2 className="font-serif text-4xl font-semibold text-foreground">
-                  How to choose the right subject focus
+                <div className="section-eyebrow">Choosing a subject</div>
+                <h2 id="subject-help-heading" className="font-serif text-3xl font-semibold text-foreground">
+                  Not sure where to start?
                 </h2>
-                <p className="text-sm leading-7 text-muted-foreground">
-                  Many parents are not deciding between all subjects. They are
-                  deciding what needs help first. This section now supports that
-                  exact decision.
+                <p className="text-sm leading-7 text-slate-600">
+                  Many parents don't need all subjects — they need to know which one to
+                  focus on first. These questions can help you decide.
                 </p>
               </div>
 
               <Accordion className="w-full" collapsible type="single">
                 <AccordionItem value="foundations">
-                  <AccordionTrigger>
-                    My child is struggling with foundations. Where do we start?
+                  <AccordionTrigger className="text-left text-base font-semibold text-foreground">
+                    My child is struggling with basics. Where do we start?
                   </AccordionTrigger>
-                  <AccordionContent>
-                    Start with the subject that is causing the most day-to-day
-                    classroom friction, usually Maths, Science, or English. We can
-                    help map the first priority through the inquiry form.
+                  <AccordionContent className="text-sm leading-7 text-slate-600">
+                    Start with the subject causing the most difficulty in class — usually
+                    Maths, Science, or English. We can help prioritise through the inquiry form.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="boards">
-                  <AccordionTrigger>
-                    What if the student is preparing for board years?
+                  <AccordionTrigger className="text-left text-base font-semibold text-foreground">
+                    What if my child is preparing for board exams?
                   </AccordionTrigger>
-                  <AccordionContent>
-                    Use the Board Prep plan on the Payments page and mention the
-                    class plus board focus in the inquiry form so the follow-up is
-                    more targeted.
+                  <AccordionContent className="text-sm leading-7 text-slate-600">
+                    Choose the Board Prep plan on the Payments page and mention
+                    the class plus board focus in the inquiry form for targeted guidance.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="multi">
-                  <AccordionTrigger>
-                    Can families ask about more than one subject?
+                  <AccordionTrigger className="text-left text-base font-semibold text-foreground">
+                    Can we ask about more than one subject?
                   </AccordionTrigger>
-                  <AccordionContent>
-                    Yes. Mention all priority subjects in the form and we will help
-                    you decide whether to begin with one core gap or a broader
-                    study-support approach.
+                  <AccordionContent className="text-sm leading-7 text-slate-600">
+                    Absolutely. Mention all priority subjects in the form and we'll help decide
+                    whether to begin with one core gap or a wider study-support approach.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>

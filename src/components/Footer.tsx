@@ -14,15 +14,15 @@ const Footer = () => {
               <Link className="inline-flex items-center gap-3" to="/">
                 <BrandMark className="items-start" dark />
               </Link>
-              <p className="max-w-sm text-sm leading-7 text-white/72">
+              <p className="max-w-sm text-sm leading-7 text-white/80">
                 Structured tuition support for students across Goa with clear
                 communication, transparent fees, and a smoother parent journey.
               </p>
-              <div className="inline-flex rounded-full border border-white/15 bg-white/8 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/65">
+              <div className="inline-flex rounded-full border border-white/15 bg-white/8 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/80">
                 Learn. Grow. Stay ahead.
               </div>
               <a
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm text-white/78 transition hover:bg-white/12"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm text-white/90 transition hover:bg-white/14 hover:text-white"
                 href={siteConfig.instagram}
                 rel="noreferrer"
                 target="_blank"
@@ -33,10 +33,10 @@ const Footer = () => {
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
                 Quick links
               </h2>
-              <ul className="space-y-3 text-sm text-white/76">
+              <ul className="space-y-3 text-sm text-white/88">
                 <li>
                   <Link className="transition hover:text-white" to="/">
                     Home
@@ -69,10 +69,10 @@ const Footer = () => {
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
                 Subject focus
               </h2>
-              <ul className="space-y-3 text-sm text-white/76">
+              <ul className="space-y-3 text-sm text-white/88">
                 {subjects.slice(0, 5).map((subject) => (
                   <li key={subject.title}>{subject.title}</li>
                 ))}
@@ -81,10 +81,10 @@ const Footer = () => {
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
                 Contact
               </h2>
-              <ul className="space-y-4 text-sm text-white/76">
+              <ul className="space-y-4 text-sm text-white/88">
                 {siteConfig.phones.map((phone) => (
                   <li className="flex items-center gap-3" key={phone}>
                     <Phone className="h-4 w-4 text-amber-300" />
@@ -116,7 +116,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="border-t border-white/10 px-8 py-5 text-sm text-white/55 md:px-10">
+          <div className="border-t border-white/10 px-8 py-5 text-sm text-white/70 md:px-10">
             <p>
               Copyright {new Date().getFullYear()} {siteConfig.brandName}. Built for
               stronger parent trust, clearer UX, and a more secure intake flow.
