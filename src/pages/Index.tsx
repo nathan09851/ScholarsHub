@@ -8,7 +8,7 @@ import StatsCard from '@/components/StatsCard';
 import SEO from '@/components/SEO';
 import { localBusinessJsonLd } from '@/lib/structuredData';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import heroImage from '@/assets/hero-education.jpg';
+import heroImage from '@/assets/schoolars-group.jpg';
 import {
   Atom,
   Calculator,

@@ -1,5 +1,6 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon } from "lucide-react";
+
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 interface StatsCardProps {
   icon: LucideIcon;
@@ -12,17 +13,21 @@ const StatsCard = ({ icon: Icon, value, label, delay = 0 }: StatsCardProps) => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <div
+    <article
       ref={ref}
-      className={`text-center opacity-0 ${isVisible ? 'animate-scale-in' : ''}`}
+      className={`surface-panel mesh-border h-full p-5 text-left opacity-0 transition-transform duration-300 hover:-translate-y-1 ${
+        isVisible ? "animate-scale-in" : ""
+      }`}
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-300 hover:scale-110">
-        <Icon className="h-8 w-8 text-primary" />
+      <div className="mb-4 inline-flex rounded-2xl bg-amber-100 p-3 text-amber-700 shadow-sm">
+        <Icon className="h-5 w-5" />
       </div>
-      <p className="text-3xl md:text-4xl font-bold text-foreground">{value}</p>
-      <p className="text-muted-foreground">{label}</p>
-    </div>
+      <p className="font-serif text-3xl font-semibold text-foreground md:text-4xl">
+        {value}
+      </p>
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">{label}</p>
+    </article>
   );
 };
 
