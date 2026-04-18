@@ -1,6 +1,6 @@
 import { LucideIcon } from "lucide-react";
 
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { AnimatedCounter, AnimatedSection } from "@/components/AnimatedSection";
 
 interface StatsCardProps {
   icon: LucideIcon;
@@ -10,27 +10,24 @@ interface StatsCardProps {
 }
 
 const StatsCard = ({ icon: Icon, value, label, delay = 0 }: StatsCardProps) => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
-    <article
-      ref={ref}
-      className={`surface-panel mesh-border h-full p-5 text-left opacity-0 transition-transform duration-300 hover:-translate-y-1 ${
-        isVisible ? "animate-scale-in" : ""
-      }`}
-      style={{ animationDelay: `${delay}ms` }}
+    <AnimatedSection
+      as="article"
+      className="surface-panel mesh-border card-hover h-full p-5 text-left"
+      variant="scale-in"
+      delay={delay}
     >
       <div
         aria-hidden="true"
-        className="mb-3 inline-flex rounded-xl bg-amber-100 p-2.5 text-amber-700 shadow-sm"
+        className="mb-3 inline-flex rounded-xl bg-amber-100 p-2.5 text-amber-700 shadow-sm transition-transform duration-200 group-hover:scale-110"
       >
         <Icon className="h-5 w-5" />
       </div>
       <p className="font-serif text-3xl font-bold text-foreground">
-        {value}
+        <AnimatedCounter value={value} delay={delay + 100} />
       </p>
       <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{label}</p>
-    </article>
+    </AnimatedSection>
   );
 };
 

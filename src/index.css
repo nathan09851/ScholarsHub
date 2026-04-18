@@ -168,6 +168,7 @@
 }
 
 @layer components {
+  /* ── Layout shells ── */
   .page-shell {
     @apply relative overflow-hidden;
   }
@@ -176,6 +177,7 @@
     @apply relative py-14 md:py-20;
   }
 
+  /* ── Surface styles ── */
   .surface-panel {
     @apply rounded-[32px] border border-white/60 bg-white/80 shadow-lg backdrop-blur-sm;
   }
@@ -184,6 +186,7 @@
     @apply rounded-[32px] border border-slate-900/10 bg-slate-950 text-white shadow-xl;
   }
 
+  /* ── Gradient border ── */
   .mesh-border {
     position: relative;
   }
@@ -208,16 +211,134 @@
     pointer-events: none;
   }
 
+  /* ── Labels ── */
   .section-eyebrow {
     @apply inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-white/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-600;
   }
 
+  /* ── Hero ── */
   .hero-glow {
     background:
       radial-gradient(circle at 15% 20%, hsl(37 96% 54% / 0.26), transparent 28%),
       radial-gradient(circle at 85% 18%, hsl(199 80% 50% / 0.22), transparent 20%),
       linear-gradient(135deg, hsl(219 39% 10% / 0.92), hsl(217 28% 18% / 0.82));
   }
+
+  /* ── Ambient animated background orbs ── */
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(72px);
+    opacity: 0.18;
+    animation: orb-float 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .hero-orb-amber {
+    background: hsl(37 96% 54%);
+    animation-delay: 0s;
+  }
+
+  .hero-orb-cyan {
+    background: hsl(199 80% 50%);
+    animation-delay: -4s;
+  }
+
+  /* ── Interactive card micro-animations ── */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 20px 40px -12px hsl(217 44% 10% / 0.18),
+      0 0 0 1px hsl(37 96% 54% / 0.14);
+  }
+
+  /* ── Button shine sweep ── */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      hsl(0 0% 100% / 0.22) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+
+  .btn-shine:hover::after {
+    transform: translateX(100%);
+  }
+
+  /* ── Nav link animated underline ── */
+  .nav-underline {
+    position: relative;
+  }
+
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: hsl(var(--primary));
+    border-radius: 1px;
+    transition: width 0.25s ease;
+  }
+
+  .nav-underline:hover::after {
+    width: 100%;
+  }
+
+  /* ── Shimmer gradient bar ── */
+  .shimmer-bar {
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+      90deg,
+      hsl(37 96% 54%) 0%,
+      hsl(199 80% 60%) 40%,
+      hsl(162 67% 52%) 70%,
+      hsl(37 96% 54%) 100%
+    );
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* ── Icon bounce on hover ── */
+  .icon-bounce {
+    transition: transform 0.2s ease;
+  }
+
+  .icon-bounce:hover {
+    animation: icon-bounce-anim 0.4s ease;
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-24px) scale(1.06); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes icon-bounce-anim {
+  0%, 100% { transform: translateY(0); }
+  40%       { transform: translateY(-5px); }
+  70%       { transform: translateY(-2px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

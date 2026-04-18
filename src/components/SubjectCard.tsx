@@ -1,7 +1,7 @@
 import { LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -24,17 +24,11 @@ const SubjectCard = ({
   outcomes = [],
   delay = 0,
 }: SubjectCardProps) => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
-    <div
-      ref={ref}
-      className={`opacity-0 ${isVisible ? "animate-fade-in" : ""}`}
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      <Card className="mesh-border group flex h-full flex-col overflow-hidden rounded-[24px] border-white/50 bg-white/85 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <AnimatedSection variant="fade-up" delay={delay}>
+      <Card className="mesh-border card-hover group flex h-full flex-col overflow-hidden rounded-[24px] border-white/50 bg-white/85 shadow-md">
         {/* Accent bar */}
-        <div className={`h-1 flex-shrink-0 bg-gradient-to-r ${accent}`} aria-hidden="true" />
+        <div className={`shimmer-bar h-1 flex-shrink-0`} aria-hidden="true" />
 
         <CardContent className="flex flex-1 flex-col gap-4 p-5">
           {/* Icon + grade badge */}
@@ -52,7 +46,7 @@ const SubjectCard = ({
 
           {/* Title + description */}
           <div className="flex-1 space-y-2">
-            <h3 className="font-serif text-xl font-semibold text-foreground transition-colors group-hover:text-secondary">
+            <h3 className="font-serif text-xl font-semibold text-foreground transition-colors duration-200 group-hover:text-primary">
               {title}
             </h3>
             <p className="text-sm leading-6 text-muted-foreground">
@@ -85,7 +79,7 @@ const SubjectCard = ({
           </Button>
         </CardContent>
       </Card>
-    </div>
+    </AnimatedSection>
   );
 };
 

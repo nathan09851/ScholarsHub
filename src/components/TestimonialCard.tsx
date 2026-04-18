@@ -1,7 +1,7 @@
 import { Quote, Star } from "lucide-react";
 
+import { AnimatedSection } from "@/components/AnimatedSection";
 import { Card, CardContent } from "@/components/ui/card";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 interface TestimonialCardProps {
   name: string;
@@ -18,21 +18,15 @@ const TestimonialCard = ({
   rating,
   delay = 0,
 }: TestimonialCardProps) => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
-    <div
-      ref={ref}
-      className={`opacity-0 ${isVisible ? "animate-fade-in" : ""}`}
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      <Card className="mesh-border flex h-full flex-col rounded-[24px] border-white/50 bg-white/85 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <AnimatedSection variant="fade-up" delay={delay}>
+      <Card className="mesh-border card-hover flex h-full flex-col rounded-[24px] border-white/50 bg-white/85 shadow-md">
         <CardContent className="flex flex-1 flex-col gap-4 p-5">
           {/* Icon + stars */}
           <div className="flex items-center justify-between gap-3">
             <div
               aria-hidden="true"
-              className="inline-flex rounded-xl bg-amber-100 p-2.5 text-amber-700"
+              className="inline-flex rounded-xl bg-amber-100 p-2.5 text-amber-700 transition-transform duration-200 hover:scale-110"
             >
               <Quote className="h-4 w-4" />
             </div>
@@ -45,11 +39,12 @@ const TestimonialCard = ({
                 <Star
                   key={`${name}-${index}`}
                   aria-hidden="true"
-                  className={`h-3.5 w-3.5 ${
+                  className={`h-3.5 w-3.5 transition-transform duration-150 ${
                     index < rating
                       ? "fill-amber-400 text-amber-400"
                       : "text-slate-300"
                   }`}
+                  style={{ transitionDelay: `${index * 40}ms` }}
                 />
               ))}
             </div>
@@ -67,7 +62,7 @@ const TestimonialCard = ({
           </div>
         </CardContent>
       </Card>
-    </div>
+    </AnimatedSection>
   );
 };
 

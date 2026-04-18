@@ -17,6 +17,7 @@ import SectionTitle from "@/components/SectionTitle";
 import StatsCard from "@/components/StatsCard";
 import SubjectCard from "@/components/SubjectCard";
 import TestimonialCard from "@/components/TestimonialCard";
+import { AnimatedSection } from "@/components/AnimatedSection";
 import {
   Accordion,
   AccordionContent,
@@ -67,6 +68,9 @@ const Index = () => {
               />
               {/* dark overlay so text stays readable */}
               <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-slate-950/30" />
+              {/* Ambient floating orbs */}
+              <div className="hero-orb hero-orb-amber" style={{ width: 340, height: 340, top: '10%', left: '-5%' }} />
+              <div className="hero-orb hero-orb-cyan" style={{ width: 280, height: 280, top: '-10%', right: '10%' }} />
             </div>
 
             {/* Content grid */}
@@ -84,11 +88,13 @@ const Index = () => {
                 </div>
 
                 {/* headline */}
-                <h1 className="font-serif text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-                  Tuition that's clear,
-                  <br />
-                  <span className="text-amber-300">trusted by families.</span>
-                </h1>
+                <AnimatedSection variant="fade-up" delay={0} duration={700}>
+                  <h1 className="font-serif text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+                    Tuition that's clear,
+                    <br />
+                    <span className="text-amber-300">trusted by families.</span>
+                  </h1>
+                </AnimatedSection>
 
                 <p className="max-w-xl text-base leading-7 text-white/78 md:text-lg">
                   {siteConfig.brandDisplayName} helps students across Goa stay
@@ -117,7 +123,7 @@ const Index = () => {
                 {/* CTAs */}
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <Button
-                    className="min-h-12 rounded-full px-7"
+                    className="btn-shine min-h-12 rounded-full px-7"
                     size="xl"
                     variant="hero"
                     asChild
@@ -232,30 +238,33 @@ const Index = () => {
           />
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {trustSignals.map((signal) => {
+            {trustSignals.map((signal, index) => {
               const Icon = signal.icon;
               return (
-                <Card
-                  className="mesh-border rounded-[24px] border-white/50 bg-white/85 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                <AnimatedSection
                   key={signal.title}
+                  variant="fade-up"
+                  delay={index * 80}
                 >
-                  <CardContent className="space-y-4 p-6">
-                    <div
-                      aria-hidden="true"
-                      className="inline-flex rounded-2xl bg-slate-950 p-3 text-amber-300"
-                    >
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-serif text-xl font-semibold text-foreground">
-                        {signal.title}
-                      </h3>
-                      <p className="text-sm leading-7 text-muted-foreground">
-                        {signal.description}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <Card className="mesh-border card-hover rounded-[24px] border-white/50 bg-white/85 shadow-md">
+                    <CardContent className="space-y-4 p-6">
+                      <div
+                        aria-hidden="true"
+                        className="inline-flex rounded-2xl bg-slate-950 p-3 text-amber-300 transition-transform duration-200 hover:scale-110"
+                      >
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div className="space-y-2">
+                        <h3 className="font-serif text-xl font-semibold text-foreground">
+                          {signal.title}
+                        </h3>
+                        <p className="text-sm leading-7 text-muted-foreground">
+                          {signal.description}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </AnimatedSection>
               );
             })}
           </div>
@@ -288,7 +297,7 @@ const Index = () => {
           </div>
 
           <div className="mt-8 flex justify-center">
-            <Button className="rounded-full px-7" size="lg" variant="outline" asChild>
+            <Button className="btn-shine rounded-full px-7" size="lg" variant="outline" asChild>
               <Link to="/subjects">
                 See all subject details
                 <ArrowRight aria-hidden="true" className="ml-1 h-4 w-4" />
@@ -312,11 +321,14 @@ const Index = () => {
                 title="Three simple steps to enrollment"
               />
 
-              <ol className="space-y-4" aria-label="Enrollment steps">
-                {learningApproach.map((item) => (
-                  <li
+              <ol className="space-y-3" aria-label="Enrollment steps">
+                {learningApproach.map((item, index) => (
+                  <AnimatedSection
+                    as="li"
                     className="rounded-[20px] border border-slate-900/8 bg-slate-50/80 p-5"
                     key={item.step}
+                    variant="fade-left"
+                    delay={index * 100}
                   >
                     <div className="text-xs font-bold uppercase tracking-[0.24em] text-amber-600">
                       Step {item.step}
@@ -327,7 +339,7 @@ const Index = () => {
                     <p className="mt-2 text-sm leading-7 text-muted-foreground">
                       {item.description}
                     </p>
-                  </li>
+                  </AnimatedSection>
                 ))}
               </ol>
             </div>
