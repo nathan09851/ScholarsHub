@@ -16,6 +16,7 @@ const NotFound = () => {
         title="Page Not Found | Schoolars Hub"
         description="The page you are looking for doesn't exist. Return to Schoolars Hub home."
         canonical={location.pathname}
+        noindex
       />
       <div className="flex min-h-screen items-center justify-center bg-background p-4">
         <div className="text-center max-w-md space-y-4">

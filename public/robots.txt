@@ -1,4 +1,6 @@
+# Schoolars Hub — Tuition Coaching in Goa
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://schoolarshub.lovable.app/sitemap.xml

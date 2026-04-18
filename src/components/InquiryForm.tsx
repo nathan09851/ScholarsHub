@@ -91,22 +91,22 @@ const InquiryForm = ({
   return (
     <Card
       className={[
-        "overflow-hidden rounded-[28px] border-white/15 bg-white/10 shadow-2xl backdrop-blur-xl",
+        "overflow-hidden rounded-[28px] border border-slate-800/60 bg-slate-900/95 shadow-2xl backdrop-blur-xl",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
     >
-      <CardHeader className="space-y-3 border-b border-white/10 bg-slate-950/35">
+      <CardHeader className="space-y-3 border-b border-white/10 bg-slate-950/50">
         <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-amber-200">
           <ShieldCheck className="h-3.5 w-3.5" />
           Secure inquiry flow
         </div>
         <CardTitle className="font-serif text-3xl text-white">{title}</CardTitle>
-        <p className="max-w-2xl text-sm leading-6 text-white/82">{description}</p>
+        <p className="max-w-2xl text-sm leading-6 text-white/90">{description}</p>
       </CardHeader>
 
-      <CardContent className="space-y-6 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-6 sm:p-8">
+      <CardContent className="space-y-6 bg-slate-900/60 p-6 sm:p-8">
         {isSubmitted ? (
           <div
             aria-live="polite"
