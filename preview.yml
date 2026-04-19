@@ -1,0 +1,172 @@
+name: Preview Deploy
+
+on:
+  pull_request:
+    branches: [main, develop]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+concurrency:
+  group: preview-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    name: Deploy PR preview
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    environment:
+      name: preview
+      url: ${{ steps.vercel-deploy.outputs.preview-url }}
+
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Pull Vercel environment
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Build for preview
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Deploy to Vercel (preview)
+        id: vercel-deploy
+        run: |
+          DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} 2>&1 | tail -1)
+          echo "preview-url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "Deployed to: $DEPLOY_URL"
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const previewUrl = '${{ steps.vercel-deploy.outputs.preview-url }}';
+            const sha = context.payload.pull_request.head.sha.substring(0, 7);
+            const prNumber = context.payload.pull_request.number;
+
+            // Delete previous bot comments to keep PR clean
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            for (const comment of comments.data) {
+              if (comment.user.login === 'github-actions[bot]' && 
+                  comment.body.includes('Preview Deployment')) {
+                await github.rest.issues.deleteComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: comment.id,
+                });
+              }
+            }
+
+            // Post fresh comment
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: [
+                '## 🚀 Preview Deployment',
+                '',
+                `| | |`,
+                `|---|---|`,
+                `| **Preview URL** | [${previewUrl}](${previewUrl}) |`,
+                `| **Commit** | \`${sha}\` |`,
+                `| **Branch** | \`${{ github.head_ref }}\` |`,
+                `| **Status** | ✅ Ready |`,
+                '',
+                '> Preview deployments are deleted when the PR is merged or closed.',
+              ].join('\n'),
+            });
+
+  # ─────────────────────────────────────────────────
+  # Lighthouse performance audit on preview
+  # ─────────────────────────────────────────────────
+  lighthouse:
+    name: Lighthouse audit
+    runs-on: ubuntu-latest
+    needs: deploy-preview
+    if: github.event.pull_request.draft == false
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Wait for preview to be ready (30s)
+        run: sleep 30
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        id: lighthouse
+        with:
+          urls: |
+            ${{ needs.deploy-preview.outputs.preview-url || 'https://scholarshub-alpha.vercel.app/' }}
+          budgetPath: .lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+        continue-on-error: true
+
+      - name: Comment Lighthouse results on PR
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const results = ${{ steps.lighthouse.outputs.manifest || '[]' }};
+            if (!results || results.length === 0) return;
+
+            const scores = results[0]?.summary || {};
+            const fmt = (v) => v !== undefined ? `${Math.round(v * 100)}/100` : 'N/A';
+            const emoji = (v) => {
+              if (v === undefined) return '⚪';
+              const score = Math.round(v * 100);
+              if (score >= 90) return '🟢';
+              if (score >= 70) return '🟡';
+              return '🔴';
+            };
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: [
+                '## 🔦 Lighthouse Report',
+                '',
+                '| Category | Score |',
+                '|---|---|',
+                `| ${emoji(scores.performance)} Performance | ${fmt(scores.performance)} |`,
+                `| ${emoji(scores.accessibility)} Accessibility | ${fmt(scores.accessibility)} |`,
+                `| ${emoji(scores['best-practices'])} Best Practices | ${fmt(scores['best-practices'])} |`,
+                `| ${emoji(scores.seo)} SEO | ${fmt(scores.seo)} |`,
+                '',
+                '> Scores below 70 🔴 should be investigated before merging to main.',
+              ].join('\n'),
+            });

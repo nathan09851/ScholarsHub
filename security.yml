@@ -1,0 +1,152 @@
+name: Security
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run every Monday at 08:00 UTC — catches new CVEs on existing deps
+    - cron: "0 8 * * 1"
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ─────────────────────────────────────────────────
+  # JOB 1 — npm audit (dependency vulnerabilities)
+  # ─────────────────────────────────────────────────
+  audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Run npm audit (high + critical only)
+        run: |
+          npm audit --audit-level=high --json > audit-report.json || true
+
+          # Parse and fail only on high/critical
+          node -e "
+            const report = require('./audit-report.json');
+            const vulns = report.vulnerabilities || {};
+            const high = Object.values(vulns).filter(v =>
+              v.severity === 'high' || v.severity === 'critical'
+            );
+            if (high.length > 0) {
+              console.error('❌ High/Critical vulnerabilities found:');
+              high.forEach(v => {
+                console.error(\`  - \${v.name} (\${v.severity}): \${v.via?.[0]?.title || v.fix || 'see npm audit'}\`);
+              });
+              process.exit(1);
+            }
+            console.log('✅ No high/critical vulnerabilities found.');
+          "
+
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: npm-audit-report
+          path: audit-report.json
+          retention-days: 14
+
+  # ─────────────────────────────────────────────────
+  # JOB 2 — Secret scanning (ensure no credentials committed)
+  # ─────────────────────────────────────────────────
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: TruffleHog — scan for leaked secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --only-verified
+
+  # ─────────────────────────────────────────────────
+  # JOB 3 — Static code security analysis (CodeQL)
+  # ─────────────────────────────────────────────────
+  codeql:
+    name: CodeQL analysis
+    runs-on: ubuntu-latest
+    # Only run on push to main/develop to save minutes
+    if: github.event_name == 'push' || github.event_name == 'schedule'
+
+    permissions:
+      security-events: write
+      contents: read
+      actions: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-and-quality
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
+
+  # ─────────────────────────────────────────────────
+  # JOB 4 — Check .env files not committed
+  # ─────────────────────────────────────────────────
+  env-check:
+    name: Check no .env committed
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Scan for committed env files
+        run: |
+          FOUND=$(git ls-files | grep -E "^\.env$|^\.env\.(local|production|development|staging)$" || true)
+          if [ -n "$FOUND" ]; then
+            echo "❌ Environment files are tracked by git:"
+            echo "$FOUND"
+            echo ""
+            echo "Run: git rm --cached $FOUND && git commit -m 'chore: remove .env from tracking'"
+            exit 1
+          fi
+          echo "✅ No .env files are tracked by git."
+
+      - name: Scan source files for hardcoded Supabase keys
+        run: |
+          # Look for anon key pattern in tracked source files (not node_modules)
+          FOUND=$(git ls-files src | xargs grep -l "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" 2>/dev/null || true)
+          if [ -n "$FOUND" ]; then
+            echo "❌ Possible hardcoded Supabase JWT found in:"
+            echo "$FOUND"
+            echo "Move all secrets to GitHub Secrets and access via import.meta.env"
+            exit 1
+          fi
+          echo "✅ No hardcoded Supabase keys found in source."
