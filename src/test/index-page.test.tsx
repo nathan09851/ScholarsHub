@@ -22,7 +22,7 @@ describe("Index page", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /tuition support that feels clear, credible, and parent-ready/i,
+        name: /tuition that's clear/i,
       }),
     ).toBeInTheDocument();
     expect(
