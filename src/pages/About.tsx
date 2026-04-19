@@ -29,6 +29,7 @@ const team = [
     role: "Mathematics Faculty",
     description:
       "Specialises in problem-solving, step-by-step reasoning, and exam preparation strategies.",
+    image: "/team/avita.jpg",
   },
   {
     name: "Marina",
@@ -41,6 +42,7 @@ const team = [
     role: "Teaching Faculty",
     description:
       "Helps students stay consistent with daily lessons, revision practice, and academic confidence.",
+    image: "/team/senha.jpg",
   },
 ];
 
@@ -174,15 +176,21 @@ const About = () => {
                 key={member.name}
               >
                 <CardContent className="space-y-4 p-6 text-center">
-                  <div
-                    aria-hidden="true"
-                    className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-orange-500 text-2xl font-bold text-slate-950 shadow-sm"
-                  >
-                    {member.name
-                      .split(" ")
-                      .map((part) => part[0])
-                      .join("")}
-                  </div>
+                  {member.image ? (
+                    <div className="mx-auto h-20 w-20 overflow-hidden rounded-full shadow-sm">
+                      <img src={member.image} alt={member.name} className="h-full w-full object-cover" />
+                    </div>
+                  ) : (
+                    <div
+                      aria-hidden="true"
+                      className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-orange-500 text-2xl font-bold text-slate-950 shadow-sm"
+                    >
+                      {member.name
+                        .split(" ")
+                        .map((part) => part[0])
+                        .join("")}
+                    </div>
+                  )}
                   <div>
                     <h3 className="font-serif text-xl font-semibold text-foreground">
                       {member.name}
