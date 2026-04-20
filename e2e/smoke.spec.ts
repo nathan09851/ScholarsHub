@@ -39,7 +39,9 @@ test.describe("ScholarsHub Smoke Tests", () => {
   test("inquiry form is accessible", async ({ page }) => {
     await page.goto("/");
 
+    // InquiryForm is lazy-loaded — Playwright's auto-retry handles the wait.
+    // The default timeout (5 s) is enough; increase if Slow 4G throttling is active.
     const formHeading = page.getByRole("heading", { name: /Request a callback/i });
-    await expect(formHeading).toBeVisible();
+    await expect(formHeading).toBeVisible({ timeout: 8000 });
   });
 });
