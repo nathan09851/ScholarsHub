@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-// Dev server runs on 8080 (from vite.config.ts), preview on 4173
+// In CI: the workflow pre-builds the app and we just preview the dist/.
+// Locally: we run the dev server for a fast feedback loop.
 const CI_PORT = 4173;
 const DEV_PORT = 8080;
 const PORT = process.env.CI ? CI_PORT : DEV_PORT;
@@ -28,12 +29,14 @@ export default defineConfig({
   ],
 
   webServer: {
+    // In CI: the app is pre-built by a prior workflow step; just serve it.
+    // Locally: use the dev server for instant HMR.
     command: process.env.CI
-      ? "npx vite build && npx vite preview --port 4173 --strictPort"
+      ? `npx vite preview --port ${CI_PORT} --strictPort`
       : "npm run dev",
     port: PORT,
     reuseExistingServer: !process.env.CI,
-    timeout: 240000,
+    timeout: 120_000,
     env: {
       VITE_SUPABASE_URL:
         process.env.VITE_SUPABASE_URL ?? "https://placeholder.supabase.co",
