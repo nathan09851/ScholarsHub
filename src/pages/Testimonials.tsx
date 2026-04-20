@@ -1,6 +1,7 @@
 import { ExternalLink, ShieldCheck, Star } from "lucide-react";
+import { lazy, Suspense } from "react";
 
-import InquiryForm from "@/components/InquiryForm";
+const InquiryForm = lazy(() => import("@/components/InquiryForm"));
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import SectionTitle from "@/components/SectionTitle";
@@ -102,12 +103,18 @@ const Testimonials = () => {
               </div>
             </div>
 
-            <InquiryForm
-              defaultIntent="callback"
-              description="Liked what you've read? Ask us about timings, subjects, or availability directly."
-              sourcePage="testimonials-page"
-              title="Ready to ask a question?"
-            />
+            <Suspense
+              fallback={
+                <div className="h-[520px] animate-pulse rounded-[28px] bg-slate-900/40 border border-slate-800/60" aria-label="Loading inquiry form…" />
+              }
+            >
+              <InquiryForm
+                defaultIntent="callback"
+                description="Liked what you've read? Ask us about timings, subjects, or availability directly."
+                sourcePage="testimonials-page"
+                title="Ready to ask a question?"
+              />
+            </Suspense>
           </div>
         </div>
       </section>

@@ -6,8 +6,9 @@ import {
   ShieldCheck,
   Smartphone,
 } from "lucide-react";
+import { lazy, Suspense } from "react";
 
-import InquiryForm from "@/components/InquiryForm";
+const InquiryForm = lazy(() => import("@/components/InquiryForm"));
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import SectionTitle from "@/components/SectionTitle";
@@ -67,12 +68,18 @@ const Payments = () => {
               </div>
             </div>
 
-            <InquiryForm
-              defaultIntent="fees"
-              description="Want fee details or help choosing the right plan? Ask us before paying."
-              sourcePage="payments-page"
-              title="Ask about fees"
-            />
+            <Suspense
+              fallback={
+                <div className="h-[520px] animate-pulse rounded-[28px] bg-slate-900/40 border border-slate-800/60" aria-label="Loading inquiry form…" />
+              }
+            >
+              <InquiryForm
+                defaultIntent="fees"
+                description="Want fee details or help choosing the right plan? Ask us before paying."
+                sourcePage="payments-page"
+                title="Ask about fees"
+              />
+            </Suspense>
           </div>
         </div>
       </section>

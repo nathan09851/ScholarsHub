@@ -1,7 +1,8 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 
-import InquiryForm from "@/components/InquiryForm";
+const InquiryForm = lazy(() => import("@/components/InquiryForm"));
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import SectionTitle from "@/components/SectionTitle";
@@ -66,12 +67,18 @@ const Subjects = () => {
               </div>
             </div>
 
-            <InquiryForm
-              defaultIntent="demo"
-              description="Not sure which subject to start with? Tell us the class level and we'll guide you."
-              sourcePage="subjects-page"
-              title="Need subject guidance?"
-            />
+            <Suspense
+              fallback={
+                <div className="h-[520px] animate-pulse rounded-[28px] bg-slate-900/40 border border-slate-800/60" aria-label="Loading inquiry form…" />
+              }
+            >
+              <InquiryForm
+                defaultIntent="demo"
+                description="Not sure which subject to start with? Tell us the class level and we'll guide you."
+                sourcePage="subjects-page"
+                title="Need subject guidance?"
+              />
+            </Suspense>
           </div>
         </div>
       </section>

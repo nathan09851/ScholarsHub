@@ -6,6 +6,7 @@ import {
   ShieldCheck,
   Star,
 } from "lucide-react";
+import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 
 // Hero image is served from public/assets-static/ as a stable URL.
@@ -17,7 +18,7 @@ const HERO_AVIF = "/assets-static/schoolars-group.avif";
 const HERO_WEBP = "/assets-static/schoolars-group.webp";
 const HERO_JPG = "/assets-static/schoolars-group.jpg";
 import BrandMark from "@/components/BrandMark";
-import InquiryForm from "@/components/InquiryForm";
+const InquiryForm = lazy(() => import("@/components/InquiryForm"));
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import SectionTitle from "@/components/SectionTitle";
@@ -223,13 +224,19 @@ const Index = () => {
                 </a>
               </div>
 
-              {/* Right column — inquiry form */}
-              <InquiryForm
-                defaultIntent="callback"
-                description="Ask about class fit, fee details, timings, or subject support."
-                sourcePage="home-hero"
-                title="Request a callback"
-              />
+              {/* Right column — inquiry form (lazy-loaded, below-fold JS deferred) */}
+              <Suspense
+                fallback={
+                  <div className="h-[520px] animate-pulse rounded-[28px] bg-slate-900/40 border border-slate-800/60" aria-label="Loading inquiry form…" />
+                }
+              >
+                <InquiryForm
+                  defaultIntent="callback"
+                  description="Ask about class fit, fee details, timings, or subject support."
+                  sourcePage="home-hero"
+                  title="Request a callback"
+                />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -432,13 +439,19 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* Fee inquiry form */}
-              <InquiryForm
-                defaultIntent="fees"
-                description="Parents often need fee details and campus guidance together. Ask us directly."
-                sourcePage="home-mid"
-                title="Ask for fee details"
-              />
+              {/* Fee inquiry form (lazy-loaded) */}
+              <Suspense
+                fallback={
+                  <div className="h-[520px] animate-pulse rounded-[28px] bg-slate-900/40 border border-slate-800/60" aria-label="Loading inquiry form…" />
+                }
+              >
+                <InquiryForm
+                  defaultIntent="fees"
+                  description="Parents often need fee details and campus guidance together. Ask us directly."
+                  sourcePage="home-mid"
+                  title="Ask for fee details"
+                />
+              </Suspense>
             </div>
           </div>
         </div>
