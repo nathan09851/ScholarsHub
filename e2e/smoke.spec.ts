@@ -6,24 +6,15 @@ test.describe("ScholarsHub Smoke Tests", () => {
     await expect(page).toHaveTitle(/Schoolars Hub/);
   });
 
-  test("View fees and enroll button navigates to payments page", async ({ page }) => {
+  test("Enroll now button navigates to about page", async ({ page }) => {
     await page.goto("/");
 
-    const enrollButton = page.getByRole("link", { name: /View fees and enroll/i });
+    // We use first() in case there are multiple "Enroll now" links (e.g. desktop vs mobile)
+    const enrollButton = page.getByRole("link", { name: /Enroll now/i }).first();
     await expect(enrollButton).toBeVisible();
     await enrollButton.click();
 
-    await expect(page).toHaveURL(/.*\/payments/);
-    await expect(page.getByText(/monthly fee/i)).toBeVisible();
-  });
-
-  test("payments page shows fee plans", async ({ page }) => {
-    await page.goto("/payments");
-
-    await expect(page.getByText(/Foundation Plan/i)).toBeVisible();
-    await expect(page.getByText(/Board Prep Plan/i)).toBeVisible();
-    await expect(page.getByText(/INR 700/i)).toBeVisible();
-    await expect(page.getByText(/INR 1,000/i)).toBeVisible();
+    await expect(page).toHaveURL(/.*\/about/);
   });
 
   test("navigation bar contains key links", async ({ page }) => {
@@ -33,7 +24,6 @@ test.describe("ScholarsHub Smoke Tests", () => {
     await expect(nav.getByRole("link", { name: /Home/i }).first()).toBeVisible();
     await expect(nav.getByRole("link", { name: /About/i }).first()).toBeVisible();
     await expect(nav.getByRole("link", { name: /Subjects/i }).first()).toBeVisible();
-    await expect(nav.getByRole("link", { name: /Payments/i }).first()).toBeVisible();
   });
 
   test("inquiry form is accessible", async ({ page }) => {

@@ -26,7 +26,7 @@ describe("submitInquiry", () => {
         intent: "fees",
         subjectInterest: "Mathematics",
         message: "Need fee details.",
-        sourcePage: "payments-page",
+        sourcePage: "about-page",
         honeypot: "",
       },
       mockClient,
@@ -35,7 +35,7 @@ describe("submitInquiry", () => {
     expect(invoke).toHaveBeenCalledWith("submit-inquiry", {
       body: expect.objectContaining({
         fullName: "Asha Naik",
-        sourcePage: "payments-page",
+        sourcePage: "about-page",
       }),
     });
     expect(result.requestId).toBe("abc-123");
