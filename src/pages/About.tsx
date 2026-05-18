@@ -72,25 +72,25 @@ const About = () => {
               />
 
               <div className="mt-8 grid gap-4 md:grid-cols-2">
-                <Card className="rounded-[22px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                <Card className="rounded-[22px] border-border/50 bg-muted/80 shadow-none">
                   <CardContent className="space-y-2 p-5">
                     <ShieldCheck aria-hidden="true" className="h-5 w-5 text-amber-500" />
                     <h3 className="font-semibold text-foreground">
                       Parent confidence
                     </h3>
-                    <p className="text-sm leading-7 text-slate-600">
+                    <p className="text-sm leading-7 text-muted-foreground">
                       Clear timings, transparent fees, and a structured inquiry
                       process so families always know what to expect.
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="rounded-[22px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                <Card className="rounded-[22px] border-border/50 bg-muted/80 shadow-none">
                   <CardContent className="space-y-2 p-5">
                     <Users aria-hidden="true" className="h-5 w-5 text-cyan-600" />
                     <h3 className="font-semibold text-foreground">
                       Small-group teaching
                     </h3>
-                    <p className="text-sm leading-7 text-slate-600">
+                    <p className="text-sm leading-7 text-muted-foreground">
                       Focused batches so every student gets the attention they
                       need to improve and stay on track.
                     </p>
@@ -143,7 +143,7 @@ const About = () => {
               const Icon = signal.icon;
               return (
                 <Card
-                  className="mesh-border rounded-[24px] border-white/50 bg-white/88 shadow-md"
+                  className="mesh-border rounded-[24px] border-border/50 bg-card/88 shadow-md"
                   key={signal.title}
                 >
                   <CardContent className="space-y-3 p-6">
@@ -156,7 +156,7 @@ const About = () => {
                     <h3 className="font-serif text-xl font-semibold text-foreground">
                       {signal.title}
                     </h3>
-                    <p className="text-sm leading-7 text-slate-600">
+                    <p className="text-sm leading-7 text-muted-foreground">
                       {signal.description}
                     </p>
                   </CardContent>
@@ -179,7 +179,7 @@ const About = () => {
           <div className="mt-10 grid gap-5 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
             {team.map((member) => (
               <Card
-                className="mesh-border rounded-[24px] border-white/50 bg-white/88 shadow-md"
+                className="mesh-border rounded-[24px] border-border/50 bg-card/88 shadow-md"
                 key={member.name}
               >
                 <CardContent className="space-y-4 p-6 text-center">
@@ -190,7 +190,7 @@ const About = () => {
                   ) : (
                     <div
                       aria-hidden="true"
-                      className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-orange-500 text-2xl font-bold text-slate-950 shadow-sm"
+                      className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-orange-500 text-2xl font-bold text-foreground shadow-sm"
                     >
                       {member.name
                         .split(" ")
@@ -206,7 +206,7 @@ const About = () => {
                       {member.role}
                     </p>
                   </div>
-                  <p className="text-sm leading-7 text-slate-600">
+                  <p className="text-sm leading-7 text-muted-foreground">
                     {member.description}
                   </p>
                 </CardContent>
@@ -218,7 +218,7 @@ const About = () => {
 
       <section className="section-shell" aria-labelledby="contact-heading">
         <div className="container px-4">
-          <Card className="mesh-border rounded-[28px] border-white/50 bg-white/90 shadow-lg">
+          <Card className="mesh-border rounded-[28px] border-border/50 bg-card/90 shadow-lg">
             <CardContent className="grid gap-8 p-7 md:grid-cols-[0.95fr_1.05fr] md:p-8">
               <div className="space-y-4">
                 <div className="section-eyebrow">Contact & hours</div>
@@ -228,7 +228,7 @@ const About = () => {
                 >
                   Get in touch
                 </h2>
-                <p className="text-sm leading-7 text-slate-600">
+                <p className="text-sm leading-7 text-muted-foreground">
                   Reach us by phone, email, or visit either campus during class
                   hours. We're always happy to talk with parents.
                 </p>
@@ -237,14 +237,14 @@ const About = () => {
               <div className="grid gap-4 sm:grid-cols-2">
                 {siteConfig.phones.map((phone) => (
                   <Card
-                    className="rounded-[20px] border-slate-900/8 bg-slate-50/80 shadow-none"
+                    className="rounded-[20px] border-border/50 bg-muted/80 shadow-none"
                     key={phone}
                   >
                     <CardContent className="space-y-2 p-5">
                       <Phone aria-hidden="true" className="h-5 w-5 text-amber-500" />
                       <h3 className="font-semibold text-foreground">Phone</h3>
                       <a
-                        className="text-sm font-medium text-slate-700 underline-offset-2 hover:underline"
+                        className="text-sm font-medium text-muted-foreground underline-offset-2 hover:underline"
                         href={`tel:${phone}`}
                       >
                         {phone}
@@ -252,36 +252,36 @@ const About = () => {
                     </CardContent>
                   </Card>
                 ))}
-                <Card className="rounded-[20px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                <Card className="rounded-[20px] border-border/50 bg-muted/80 shadow-none">
                   <CardContent className="space-y-2 p-5">
                     <Mail aria-hidden="true" className="h-5 w-5 text-cyan-600" />
                     <h3 className="font-semibold text-foreground">Email</h3>
                     <a
-                      className="text-sm font-medium text-slate-700 underline-offset-2 hover:underline"
+                      className="text-sm font-medium text-muted-foreground underline-offset-2 hover:underline"
                       href={`mailto:${siteConfig.email}`}
                     >
                       {siteConfig.email}
                     </a>
                   </CardContent>
                 </Card>
-                <Card className="rounded-[20px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                <Card className="rounded-[20px] border-border/50 bg-muted/80 shadow-none">
                   <CardContent className="space-y-2 p-5">
                     <Clock3 aria-hidden="true" className="h-5 w-5 text-emerald-600" />
                     <h3 className="font-semibold text-foreground">Class hours</h3>
-                    <p className="text-sm text-slate-700">
+                    <p className="text-sm text-muted-foreground">
                       Regular: {siteConfig.timings.regular}
                     </p>
-                    <p className="text-sm text-slate-700">
+                    <p className="text-sm text-muted-foreground">
                       Exams: {siteConfig.timings.exam}
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="rounded-[20px] border-slate-900/8 bg-slate-50/80 shadow-none sm:col-span-2">
+                <Card className="rounded-[20px] border-border/50 bg-muted/80 shadow-none sm:col-span-2">
                   <CardContent className="space-y-2 p-5">
                     <MapPin aria-hidden="true" className="h-5 w-5 text-rose-500" />
                     <h3 className="font-semibold text-foreground">Campus locations</h3>
                     {campusLocations.map((campus) => (
-                      <p className="text-sm text-slate-700" key={campus.name}>
+                      <p className="text-sm text-muted-foreground" key={campus.name}>
                         <strong>{campus.name}</strong> — {campus.area}
                       </p>
                     ))}

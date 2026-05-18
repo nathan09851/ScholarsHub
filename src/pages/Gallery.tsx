@@ -72,7 +72,7 @@ const Gallery = () => {
                 className={`px-6 py-2 rounded-full transition-all duration-300 text-sm font-medium ${
                   activeCategory === category
                     ? "bg-primary text-white shadow-lg scale-105"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
                 {category}
@@ -93,7 +93,7 @@ const Gallery = () => {
                     <Dialog>
                       <DialogTrigger asChild>
                         <div className="relative overflow-hidden rounded-2xl">
-                          <div className="absolute inset-0 bg-slate-900/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10 flex items-center justify-center">
+                          <div className="absolute inset-0 bg-foreground/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10 flex items-center justify-center">
                             <span className="text-white text-sm font-medium bg-primary/80 px-4 py-2 rounded-full backdrop-blur-sm transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
                               View Photo
                             </span>
@@ -103,7 +103,7 @@ const Gallery = () => {
                             <source srcSet={image.src} type="image/webp" />
                             <img
                               alt={image.alt}
-                              className="w-full h-auto object-cover rounded-2xl transition-transform duration-500 ease-out group-hover:scale-105 bg-slate-100"
+                              className="w-full h-auto object-cover rounded-2xl transition-transform duration-500 ease-out group-hover:scale-105 bg-muted"
                               loading="lazy"
                               decoding="async"
                               src={image.fallback}
@@ -125,9 +125,9 @@ const Gallery = () => {
                               decoding="async"
                             />
                           </picture>
-                          <div className="bg-white/90 backdrop-blur-md p-4 mt-2 rounded-lg">
-                            <p className="text-slate-800 font-medium text-center">{image.alt}</p>
-                            <p className="text-slate-500 text-xs text-center mt-1 uppercase tracking-wider">{image.category}</p>
+                          <div className="bg-card/90 backdrop-blur-md p-4 mt-2 rounded-lg">
+                            <p className="text-foreground font-medium text-center">{image.alt}</p>
+                            <p className="text-muted-foreground text-xs text-center mt-1 uppercase tracking-wider">{image.category}</p>
                           </div>
                         </div>
                       </DialogContent>
@@ -139,7 +139,7 @@ const Gallery = () => {
 
             {filteredImages.length === 0 && (
               <div className="text-center py-20">
-                <p className="text-slate-400">No images found in this category.</p>
+                <p className="text-muted-foreground">No images found in this category.</p>
               </div>
             )}
           </div>

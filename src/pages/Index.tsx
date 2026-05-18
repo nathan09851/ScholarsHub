@@ -286,7 +286,7 @@ const Index = () => {
                   variant="fade-up"
                   delay={index * 80}
                 >
-                  <Card className="mesh-border card-hover rounded-[24px] border-white/50 bg-white/85 shadow-md">
+                  <Card className="mesh-border card-hover rounded-[24px] border-border/50 bg-card/85 shadow-md">
                     <CardContent className="space-y-4 p-6">
                       <div
                         aria-hidden="true"
@@ -365,7 +365,7 @@ const Index = () => {
                 {learningApproach.map((item, index) => (
                   <AnimatedSection
                     as="li"
-                    className="rounded-[20px] border border-slate-900/8 bg-slate-50/80 p-5"
+                    className="rounded-[20px] border border-border/50 bg-muted/80 p-5"
                     key={item.step}
                     variant="fade-left"
                     delay={index * 100}
@@ -402,7 +402,7 @@ const Index = () => {
                     <div className="mt-5 space-y-3">
                       {campusLocations.map((location) => (
                         <div
-                          className="rounded-[18px] border border-slate-900/8 bg-slate-50/80 p-4"
+                          className="rounded-[18px] border border-border/50 bg-muted/80 p-4"
                           key={location.name}
                         >
                           <h4 className="font-semibold text-foreground">
@@ -524,7 +524,7 @@ const Index = () => {
               title="Frequently asked by parents"
             />
 
-            <Card className="mesh-border mt-10 rounded-[28px] border-white/50 bg-white/88 shadow-lg">
+            <Card className="mesh-border mt-10 rounded-[28px] border-border/50 bg-card/88 shadow-lg">
               <CardContent className="p-3 sm:p-5">
                 <Accordion
                   className="w-full"

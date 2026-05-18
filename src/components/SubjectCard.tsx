@@ -26,7 +26,7 @@ const SubjectCard = ({
 }: SubjectCardProps) => {
   return (
     <AnimatedSection variant="fade-up" delay={delay}>
-      <Card className="mesh-border card-hover group flex h-full flex-col overflow-hidden rounded-[24px] border-white/50 bg-white/85 shadow-md">
+      <Card className="mesh-border card-hover group flex h-full flex-col overflow-hidden rounded-[24px] border-border/50 bg-card/85 shadow-md">
         {/* Accent bar */}
         <div className={`shimmer-bar h-1 flex-shrink-0`} aria-hidden="true" />
 
@@ -39,7 +39,7 @@ const SubjectCard = ({
             >
               <Icon className="h-5 w-5" />
             </div>
-            <span className="rounded-full bg-slate-900/6 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+            <span className="rounded-full bg-foreground/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               {grades}
             </span>
           </div>
@@ -59,7 +59,7 @@ const SubjectCard = ({
             <ul className="flex flex-wrap gap-1.5" aria-label={`${title} learning outcomes`}>
               {outcomes.map((item) => (
                 <li
-                  className="rounded-full bg-slate-900/5 px-3 py-1 text-[11px] font-medium text-slate-600"
+                  className="rounded-full bg-slate-900/5 px-3 py-1 text-[11px] font-medium text-muted-foreground"
                   key={item}
                 >
                   {item}

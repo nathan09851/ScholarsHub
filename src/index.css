@@ -169,9 +169,9 @@
   body {
     @apply bg-background font-sans text-foreground antialiased;
     background-image:
-      radial-gradient(circle at top left, hsl(35 84% 52% / 0.15), transparent 34%),
+      radial-gradient(circle at top left, hsl(var(--primary) / 0.15), transparent 34%),
       radial-gradient(circle at top right, hsl(199 80% 50% / 0.1), transparent 28%),
-      linear-gradient(180deg, hsl(var(--background)), hsl(38 43% 96%));
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
     min-height: 100vh;
     text-rendering: optimizeLegibility;
     position: relative;
@@ -234,7 +234,7 @@
 
   /* ── Surface styles ── */
   .surface-panel {
-    @apply rounded-[32px] border border-white/60 bg-white/80 shadow-lg backdrop-blur-sm;
+    @apply rounded-[32px] border border-border/60 bg-card/80 shadow-lg backdrop-blur-sm;
   }
 
   .ink-panel {
@@ -268,7 +268,7 @@
 
   /* ── Labels ── */
   .section-eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-white/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-600;
+    @apply inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground;
   }
 
   /* ── Hero ── */

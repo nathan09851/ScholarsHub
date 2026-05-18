@@ -44,16 +44,16 @@ const Subjects = () => {
               </div>
 
               {/* Subject Briefings */}
-              <div className="mt-10 overflow-hidden rounded-[20px] border border-slate-900/10 bg-slate-50/50 p-5">
-                <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.1em] text-slate-800">
+              <div className="mt-10 overflow-hidden rounded-[20px] border border-border/50 bg-muted/50 p-5">
+                <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.1em] text-foreground">
                   Why these subjects matter
                 </h3>
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {subjects.map((subject) => (
-                    <li key={subject.title} className="flex items-start gap-2 text-sm text-slate-600">
+                    <li key={subject.title} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                       <div>
-                        <strong className="font-semibold text-slate-800">{subject.title}:</strong>{" "}
+                        <strong className="font-semibold text-foreground">{subject.title}:</strong>{" "}
                         <span className="leading-snug">{subject.description}</span>
                       </div>
                     </li>
@@ -93,18 +93,18 @@ const Subjects = () => {
 
               return (
                 <Card
-                  className="mesh-border rounded-[28px] border-white/50 bg-white/88 shadow-md"
+                  className="mesh-border rounded-[28px] border-border/50 bg-card/88 shadow-md"
                   key={subject.title}
                 >
                   <CardHeader className="space-y-4">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                       <div
                         aria-hidden="true"
-                        className={`inline-flex rounded-2xl bg-gradient-to-br ${subject.accent} p-3 text-slate-950 shadow-sm`}
+                        className={`inline-flex rounded-2xl bg-gradient-to-br ${subject.accent} p-3 text-foreground shadow-sm`}
                       >
                         <Icon className="h-6 w-6" />
                       </div>
-                      <div className="rounded-full bg-slate-900/6 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
+                      <div className="rounded-full bg-foreground/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                         {subject.grades}
                       </div>
                     </div>
@@ -112,20 +112,20 @@ const Subjects = () => {
                       <CardTitle className="font-serif text-2xl font-semibold text-foreground">
                         {subject.title}
                       </CardTitle>
-                      <p className="text-sm leading-7 text-slate-600">
+                      <p className="text-sm leading-7 text-muted-foreground">
                         {subject.description}
                       </p>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-5">
-                    <div className="rounded-[20px] border border-slate-900/8 bg-slate-50/80 p-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+                    <div className="rounded-[20px] border border-border/50 bg-muted/80 p-5">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                         Learning outcomes
                       </p>
                       <ul className="mt-4 space-y-3">
                         {subject.outcomes.map((outcome) => (
                           <li
-                            className="flex items-center gap-3 text-sm text-slate-700"
+                            className="flex items-center gap-3 text-sm text-muted-foreground"
                             key={outcome}
                           >
                             <CheckCircle2 aria-hidden="true" className="h-4 w-4 flex-shrink-0 text-emerald-500" />
@@ -148,14 +148,14 @@ const Subjects = () => {
 
       <section className="section-shell" aria-labelledby="subject-help-heading">
         <div className="container px-4">
-          <Card className="mesh-border rounded-[28px] border-white/50 bg-white/90 shadow-lg">
+          <Card className="mesh-border rounded-[28px] border-border/50 bg-card/90 shadow-lg">
             <CardContent className="grid gap-8 p-7 md:grid-cols-[0.9fr_1.1fr] md:p-8">
               <div className="space-y-4">
                 <div className="section-eyebrow">Choosing a subject</div>
                 <h2 id="subject-help-heading" className="font-serif text-3xl font-semibold text-foreground">
                   Not sure where to start?
                 </h2>
-                <p className="text-sm leading-7 text-slate-600">
+                <p className="text-sm leading-7 text-muted-foreground">
                   Many parents don't need all subjects — they need to know which one to
                   focus on first. These questions can help you decide.
                 </p>
@@ -166,7 +166,7 @@ const Subjects = () => {
                   <AccordionTrigger className="text-left text-base font-semibold text-foreground">
                     My child is struggling with basics. Where do we start?
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-7 text-slate-600">
+                  <AccordionContent className="text-sm leading-7 text-muted-foreground">
                     Start with the subject causing the most difficulty in class — usually
                     Maths, Science, or English. We can help prioritise through the inquiry form.
                   </AccordionContent>
@@ -175,7 +175,7 @@ const Subjects = () => {
                   <AccordionTrigger className="text-left text-base font-semibold text-foreground">
                     What if my child is preparing for board exams?
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-7 text-slate-600">
+                  <AccordionContent className="text-sm leading-7 text-muted-foreground">
                     Choose the Board Prep plan in your inquiry form and mention
                     the class plus board focus for targeted guidance.
                   </AccordionContent>
@@ -184,7 +184,7 @@ const Subjects = () => {
                   <AccordionTrigger className="text-left text-base font-semibold text-foreground">
                     Can we ask about more than one subject?
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-7 text-slate-600">
+                  <AccordionContent className="text-sm leading-7 text-muted-foreground">
                     Absolutely. Mention all priority subjects in the form and we'll help decide
                     whether to begin with one core gap or a wider study-support approach.
                   </AccordionContent>

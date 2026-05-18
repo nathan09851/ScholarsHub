@@ -20,7 +20,7 @@ const TestimonialCard = ({
 }: TestimonialCardProps) => {
   return (
     <AnimatedSection variant="fade-up" delay={delay}>
-      <Card className="mesh-border card-hover h-full rounded-[24px] border-white/50 bg-white/85 shadow-md">
+      <Card className="mesh-border card-hover h-full rounded-[24px] border-border/50 bg-card/85 shadow-md">
         <CardContent className="flex flex-col sm:flex-row gap-5 lg:gap-8 p-6 md:p-7">
           {/* Avatar / Icon & Attribution side */}
           <div className="flex flex-col gap-3 min-w-[200px] shrink-0 border-b sm:border-b-0 sm:border-r border-slate-200/60 pb-4 sm:pb-0 sm:pr-4">
@@ -58,7 +58,7 @@ const TestimonialCard = ({
               ))}
             </div>
 
-            <p className="text-sm sm:text-base leading-7 text-slate-700 font-serif italic">
+            <p className="text-sm sm:text-base leading-7 text-muted-foreground font-serif italic">
               "{content}"
             </p>
           </div>
