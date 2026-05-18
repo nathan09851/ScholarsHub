@@ -125,6 +125,7 @@ const Navbar = () => {
               </span>
             </button>
           </div>
+        </div>
 
         {/* Mobile menu — slide down */}
         <div
