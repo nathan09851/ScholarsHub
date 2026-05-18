@@ -161,8 +161,8 @@ const Index = () => {
                       variant="hero"
                       asChild
                     >
-                      <Link to="/payments">
-                        View fees and enroll
+                      <Link to="/about">
+                        Enroll now
                         <ArrowRight aria-hidden="true" className="ml-1 h-4 w-4" />
                       </Link>
                     </Button>

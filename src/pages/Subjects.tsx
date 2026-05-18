@@ -37,12 +37,7 @@ const Subjects = () => {
                 title="What subjects we teach"
               />
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button className="rounded-full px-7" size="lg" variant="hero" asChild>
-                  <Link to="/payments">
-                    View fee plans
-                    <ArrowRight aria-hidden="true" className="ml-1 h-4 w-4" />
-                  </Link>
-                </Button>
+
                 <Button className="rounded-full px-7" size="lg" variant="outline" asChild>
                   <Link to="/about">Talk to the team</Link>
                 </Button>
@@ -141,7 +136,7 @@ const Subjects = () => {
                     </div>
 
                     <Button className="w-full rounded-2xl" size="lg" variant="outline" asChild>
-                      <Link to="/payments">Enroll for {subject.title}</Link>
+                      <Link to="/about">Enroll for {subject.title}</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -181,8 +176,8 @@ const Subjects = () => {
                     What if my child is preparing for board exams?
                   </AccordionTrigger>
                   <AccordionContent className="text-sm leading-7 text-slate-600">
-                    Choose the Board Prep plan on the Payments page and mention
-                    the class plus board focus in the inquiry form for targeted guidance.
+                    Choose the Board Prep plan in your inquiry form and mention
+                    the class plus board focus for targeted guidance.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="multi">

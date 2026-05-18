@@ -5,12 +5,12 @@ import { Link, useLocation } from "react-router-dom";
 import BrandMark from "@/components/BrandMark";
 import { siteConfig } from "@/content/site";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Subjects", path: "/subjects" },
   { name: "Testimonials", path: "/testimonials" },
-  { name: "Payments", path: "/payments" },
   { name: "About", path: "/about" },
   { name: "Gallery", path: "/gallery" },
 ];
@@ -88,13 +88,14 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
+            <ThemeToggle />
             <Button
               className="btn-shine rounded-full px-6 transition-transform duration-200 hover:scale-[1.03]"
               size="sm"
               variant="hero"
               asChild
             >
-              <Link to="/payments">Enroll now</Link>
+              <Link to="/about">Enroll now</Link>
             </Button>
             <a
               aria-label="Chat with Schoolars Hub on WhatsApp"
@@ -108,20 +109,22 @@ const Navbar = () => {
             </a>
           </div>
 
-          <button
-            aria-expanded={isOpen}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="inline-flex rounded-full border border-slate-900/10 bg-white/70 p-2 text-slate-900 shadow-sm transition-all hover:bg-white hover:scale-105 md:hidden"
-            onClick={() => setIsOpen((value) => !value)}
-            type="button"
-          >
-            <span
-              className={`transition-transform duration-200 ${isOpen ? "rotate-90" : "rotate-0"}`}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              className="inline-flex rounded-full border border-slate-900/10 bg-white/70 p-2 text-slate-900 shadow-sm transition-all hover:bg-white hover:scale-105"
+              onClick={() => setIsOpen((value) => !value)}
+              type="button"
             >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </span>
-          </button>
-        </div>
+              <span
+                className={`transition-transform duration-200 ${isOpen ? "rotate-90" : "rotate-0"}`}
+              >
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </span>
+            </button>
+          </div>
 
         {/* Mobile menu — slide down */}
         <div
@@ -154,7 +157,7 @@ const Navbar = () => {
                 );
               })}
               <Button className="btn-shine mt-2 rounded-2xl" size="lg" variant="hero" asChild>
-                <Link to="/payments">Start enrollment</Link>
+                <Link to="/about">Start enrollment</Link>
               </Button>
               <p className="px-2 pt-2 text-xs uppercase tracking-[0.24em] text-slate-400">
                 {siteConfig.brandSubtitle}

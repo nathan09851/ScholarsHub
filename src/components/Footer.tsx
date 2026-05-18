@@ -55,11 +55,7 @@ const Footer = () => {
                     Testimonials
                   </Link>
                 </li>
-                <li>
-                  <Link className="transition hover:text-white" to="/payments">
-                    Payments
-                  </Link>
-                </li>
+
                 <li>
                   <Link className="transition hover:text-white" to="/gallery">
                     Gallery

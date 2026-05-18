@@ -99,9 +99,7 @@ const About = () => {
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button className="rounded-full px-7" size="lg" variant="hero" asChild>
-                  <Link to="/payments">See fee plans</Link>
-                </Button>
+
                 <Button className="rounded-full px-7" size="lg" variant="outline" asChild>
                   <a
                     href={siteConfig.googleReviewsUrl}
