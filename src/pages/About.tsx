@@ -149,7 +149,7 @@ const About = () => {
                   <CardContent className="space-y-3 p-6">
                     <div
                       aria-hidden="true"
-                      className="inline-flex rounded-2xl bg-slate-950 p-3 text-amber-300"
+                      className="theme-icon p-3"
                     >
                       <Icon className="h-5 w-5" />
                     </div>
@@ -202,7 +202,7 @@ const About = () => {
                     <h3 className="font-serif text-xl font-semibold text-foreground">
                       {member.name}
                     </h3>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                       {member.role}
                     </p>
                   </div>

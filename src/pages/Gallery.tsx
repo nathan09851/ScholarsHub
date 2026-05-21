@@ -71,7 +71,7 @@ const Gallery = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-2 rounded-full transition-all duration-300 text-sm font-medium ${
                   activeCategory === category
-                    ? "bg-primary text-white shadow-lg scale-105"
+                    ? "bg-primary text-primary-foreground shadow-lg scale-105"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
@@ -94,7 +94,7 @@ const Gallery = () => {
                       <DialogTrigger asChild>
                         <div className="relative overflow-hidden rounded-2xl">
                           <div className="absolute inset-0 bg-foreground/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10 flex items-center justify-center">
-                            <span className="text-white text-sm font-medium bg-primary/80 px-4 py-2 rounded-full backdrop-blur-sm transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
+                            <span className="rounded-full bg-card/90 px-4 py-2 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
                               View Photo
                             </span>
                           </div>

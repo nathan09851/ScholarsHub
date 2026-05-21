@@ -86,7 +86,7 @@ const Index = () => {
                   className="h-full w-full object-cover object-center"
                   height={1080}
                   loading="eager"
-                  fetchPriority="high"
+                  fetchpriority="high"
                   decoding="sync"
                   src={HERO_JPG}
                   width={1920}
@@ -137,14 +137,14 @@ const Index = () => {
                   <ul className="grid gap-2.5 sm:grid-cols-2" role="list">
                     {heroHighlights.map((highlight) => (
                       <li
-                        className="flex items-start gap-2.5 rounded-2xl border border-white/12 bg-white/8 px-4 py-3"
+                        className="flex items-start gap-2.5 rounded-2xl border border-white/20 bg-slate-950/30 px-4 py-3 backdrop-blur-sm"
                         key={highlight}
                       >
                         <BadgeCheck
                           aria-hidden="true"
                           className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-300"
                         />
-                        <span className="text-sm leading-6 text-white/82">
+                        <span className="text-sm leading-6 text-white/90">
                           {highlight}
                         </span>
                       </li>
@@ -167,7 +167,7 @@ const Index = () => {
                       </Link>
                     </Button>
                     <Button
-                      className="min-h-12 rounded-full border-white/20 bg-white/8 px-7 text-white hover:bg-white/14 hover:text-white w-full sm:w-auto"
+                      className="min-h-12 rounded-full border-white/20 bg-slate-950/30 px-7 text-white hover:bg-slate-950/40 hover:text-white w-full sm:w-auto"
                       size="xl"
                       variant="outline"
                       asChild
@@ -179,30 +179,30 @@ const Index = () => {
 
                 {/* quick trust badges */}
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/8 px-3 py-2.5">
+                  <div className="flex items-center gap-2 rounded-2xl border border-white/20 bg-slate-950/30 px-3 py-2.5 backdrop-blur-sm">
                     <ShieldCheck
                       aria-hidden="true"
                       className="h-4 w-4 flex-shrink-0 text-amber-300"
                     />
-                    <p className="text-xs font-medium leading-tight text-white/82">
+                    <p className="text-xs font-semibold leading-tight text-white/90">
                       Secure inquiry
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/8 px-3 py-2.5">
+                  <div className="flex items-center gap-2 rounded-2xl border border-white/20 bg-slate-950/30 px-3 py-2.5 backdrop-blur-sm">
                     <Clock3
                       aria-hidden="true"
                       className="h-4 w-4 flex-shrink-0 text-cyan-300"
                     />
-                    <p className="text-xs font-medium leading-tight text-white/82">
+                    <p className="text-xs font-semibold leading-tight text-white/90">
                       Clear timings
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/8 px-3 py-2.5">
+                  <div className="flex items-center gap-2 rounded-2xl border border-white/20 bg-slate-950/30 px-3 py-2.5 backdrop-blur-sm">
                     <MapPin
                       aria-hidden="true"
                       className="h-4 w-4 flex-shrink-0 text-emerald-300"
                     />
-                    <p className="text-xs font-medium leading-tight text-white/82">
+                    <p className="text-xs font-semibold leading-tight text-white/90">
                       2 Goa centres
                     </p>
                   </div>
@@ -210,7 +210,7 @@ const Index = () => {
 
                 {/* Google rating strip */}
                 <a
-                  className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm text-white/80 transition hover:bg-white/14"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-slate-950/30 px-4 py-2 text-sm text-white/90 backdrop-blur-sm transition hover:bg-slate-950/40"
                   href={siteConfig.googleReviewsUrl}
                   rel="noreferrer"
                   target="_blank"
@@ -228,7 +228,7 @@ const Index = () => {
                     ))}
                   </span>
                   <span className="font-semibold">5.0</span>
-                  <span className="text-white/60">· 40+ Google reviews</span>
+                  <span className="text-white/70">· 40+ Google reviews</span>
                 </a>
               </div>
 
@@ -290,7 +290,7 @@ const Index = () => {
                     <CardContent className="space-y-4 p-6">
                       <div
                         aria-hidden="true"
-                        className="inline-flex rounded-2xl bg-slate-950 p-3 text-amber-300 transition-transform duration-200 hover:scale-110"
+                        className="theme-icon p-3 transition-transform duration-200 hover:scale-110"
                       >
                         <Icon className="h-5 w-5" />
                       </div>
@@ -370,7 +370,7 @@ const Index = () => {
                     variant="fade-left"
                     delay={index * 100}
                   >
-                    <div className="text-xs font-bold uppercase tracking-[0.24em] text-amber-600">
+                    <div className="text-xs font-bold uppercase tracking-[0.24em] text-primary">
                       Step {item.step}
                     </div>
                     <h3 className="mt-2 font-serif text-lg font-semibold text-foreground">
@@ -408,7 +408,7 @@ const Index = () => {
                           <h4 className="font-semibold text-foreground">
                             {location.name}
                           </h4>
-                          <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
+                          <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                             {location.area}
                           </p>
                           <p className="mt-2 text-sm leading-6 text-muted-foreground">

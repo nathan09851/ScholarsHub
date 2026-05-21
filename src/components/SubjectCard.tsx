@@ -39,7 +39,7 @@ const SubjectCard = ({
             >
               <Icon className="h-5 w-5" />
             </div>
-            <span className="rounded-full bg-foreground/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <span className="tone-chip px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]">
               {grades}
             </span>
           </div>
@@ -59,7 +59,7 @@ const SubjectCard = ({
             <ul className="flex flex-wrap gap-1.5" aria-label={`${title} learning outcomes`}>
               {outcomes.map((item) => (
                 <li
-                  className="rounded-full bg-slate-900/5 px-3 py-1 text-[11px] font-medium text-muted-foreground"
+                  className="rounded-full bg-muted/70 px-3 py-1 text-[11px] font-medium text-muted-foreground"
                   key={item}
                 >
                   {item}

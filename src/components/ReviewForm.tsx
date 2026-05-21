@@ -17,10 +17,13 @@ interface ReviewFormProps {
 }
 
 const inputClasses =
-  "h-12 rounded-2xl border-white/20 bg-white/80 text-slate-900 shadow-sm placeholder:text-slate-500 focus-visible:ring-amber-500";
+  "h-12 rounded-2xl border-input bg-background/80 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary";
 
 const textAreaClasses =
-  "min-h-28 rounded-2xl border-white/20 bg-white/80 text-slate-900 shadow-sm placeholder:text-slate-500 focus-visible:ring-amber-500";
+  "min-h-28 rounded-2xl border-input bg-background/80 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary";
+
+const labelClasses = "text-sm font-medium text-foreground";
+const errorClasses = "min-h-5 text-xs text-destructive";
 
 const ReviewForm = ({ onSuccessCallback }: ReviewFormProps) => {
   const queryClient = useQueryClient();
@@ -62,7 +65,7 @@ const ReviewForm = ({ onSuccessCallback }: ReviewFormProps) => {
       />
 
       <div className="space-y-2">
-        <Label className="text-sm font-medium text-slate-900" htmlFor="review-name">
+        <Label className={labelClasses} htmlFor="review-name">
           Your Name
         </Label>
         <Input
@@ -71,21 +74,21 @@ const ReviewForm = ({ onSuccessCallback }: ReviewFormProps) => {
           placeholder="Enter your name"
           {...form.register("name")}
         />
-        <p className="min-h-5 text-xs text-rose-500">
+        <p className={errorClasses}>
           {form.formState.errors.name?.message}
         </p>
       </div>
 
       <div className="space-y-2">
-        <Label className="text-sm font-medium text-slate-900">Your Role</Label>
+        <Label className={labelClasses}>Your Role</Label>
         <div className="flex gap-3">
           {["Student", "Parent", "Other"].map((role) => (
             <label
               key={role}
               className={`cursor-pointer rounded-full border px-4 py-2 text-sm transition ${
                 form.watch("role") === role
-                  ? "border-amber-400 bg-amber-50 text-amber-700 font-semibold"
-                  : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
+                  ? "border-primary bg-primary/15 text-foreground font-semibold ring-1 ring-primary/25"
+                  : "border-border bg-muted/55 text-muted-foreground hover:border-primary/40 hover:bg-muted"
               }`}
             >
               <input
@@ -98,13 +101,13 @@ const ReviewForm = ({ onSuccessCallback }: ReviewFormProps) => {
             </label>
           ))}
         </div>
-        <p className="min-h-5 text-xs text-rose-500">
+        <p className={errorClasses}>
           {form.formState.errors.role?.message}
         </p>
       </div>
 
       <div className="space-y-2">
-        <Label className="text-sm font-medium text-slate-900">Rating</Label>
+        <Label className={labelClasses}>Rating</Label>
         <div className="flex gap-1">
           {[1, 2, 3, 4, 5].map((star) => (
             <button
@@ -119,19 +122,19 @@ const ReviewForm = ({ onSuccessCallback }: ReviewFormProps) => {
                 className={`h-7 w-7 transition-colors ${
                   star <= (hoverRating || selectedRating)
                     ? "fill-amber-400 text-amber-400"
-                    : "fill-slate-100 text-slate-200"
+                    : "fill-muted text-muted-foreground/35"
                 }`}
               />
             </button>
           ))}
         </div>
-        <p className="min-h-5 text-xs text-rose-500">
+        <p className={errorClasses}>
           {form.formState.errors.rating?.message}
         </p>
       </div>
 
       <div className="space-y-2">
-        <Label className="text-sm font-medium text-slate-900" htmlFor="review-content">
+        <Label className={labelClasses} htmlFor="review-content">
           Your Review
         </Label>
         <Textarea
@@ -140,7 +143,7 @@ const ReviewForm = ({ onSuccessCallback }: ReviewFormProps) => {
           placeholder="Tell us about your experience..."
           {...form.register("content")}
         />
-        <p className="min-h-5 text-xs text-rose-500">
+        <p className={errorClasses}>
           {form.formState.errors.content?.message}
         </p>
       </div>

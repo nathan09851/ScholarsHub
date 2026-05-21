@@ -53,8 +53,8 @@ const Navbar = () => {
     <header ref={navRef} className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl px-4 pt-3 sm:px-6 lg:px-8">
         <div
-          className={`mesh-border flex items-center justify-between rounded-[24px] border border-border/40 bg-background/80 dark:bg-slate-950/80 dark:border-slate-800/60 px-3 py-2 shadow-lg backdrop-blur-xl md:px-5 md:py-3 transition-all duration-300 ${
-            scrolled ? "shadow-xl bg-background/95 dark:bg-slate-950/95 py-1.5" : ""
+          className={`mesh-border flex items-center justify-between rounded-[24px] border border-border/50 bg-card/82 px-3 py-2 shadow-lg backdrop-blur-xl transition-all duration-300 md:px-5 md:py-3 ${
+            scrolled ? "bg-card/95 py-1.5 shadow-xl" : ""
           }`}
         >
           <Link
@@ -75,8 +75,8 @@ const Navbar = () => {
                   aria-current={isActive ? "page" : undefined}
                   className={`nav-underline rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 ${
                     isActive
-                      ? "bg-foreground text-background shadow-sm dark:bg-slate-100 dark:text-slate-900"
-                      : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/50"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-muted-foreground hover:bg-muted/70 hover:text-foreground"
                   }`}
                   key={link.path}
                   to={link.path}
@@ -114,7 +114,7 @@ const Navbar = () => {
             <button
               aria-expanded={isOpen}
               aria-label={isOpen ? "Close menu" : "Open menu"}
-              className="inline-flex rounded-full border border-border/50 bg-background/70 dark:bg-slate-900/80 dark:border-slate-800/50 p-2 text-foreground shadow-sm transition-all duration-300 hover:bg-background dark:hover:bg-slate-800 hover:scale-105"
+              className="inline-flex rounded-full border border-border/60 bg-card/80 p-2 text-foreground shadow-sm transition-all duration-300 hover:scale-105 hover:bg-card"
               onClick={() => setIsOpen((value) => !value)}
               type="button"
             >
@@ -133,7 +133,7 @@ const Navbar = () => {
             isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="mt-2 rounded-[24px] border border-border/40 bg-background/95 dark:bg-slate-950/95 dark:border-slate-800/60 p-4 shadow-xl backdrop-blur-xl transition-colors duration-300">
+          <div className="mt-2 rounded-[24px] border border-border/50 bg-card/95 p-4 shadow-xl backdrop-blur-xl transition-colors duration-300">
             <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
               {navLinks.map((link, index) => {
                 const isActive = location.pathname === link.path;
@@ -142,8 +142,8 @@ const Navbar = () => {
                     aria-current={isActive ? "page" : undefined}
                     className={`py-3 px-2 text-base rounded-md w-full block font-semibold transition-all duration-300 ${
                       isActive
-                        ? "bg-foreground text-background dark:bg-slate-100 dark:text-slate-900"
-                        : "text-muted-foreground hover:bg-foreground/5 hover:translate-x-1 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/50"
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:translate-x-1"
                     }`}
                     key={link.path}
                     style={{ 
@@ -160,7 +160,7 @@ const Navbar = () => {
               <Button className="btn-shine mt-2 rounded-2xl" size="lg" variant="hero" asChild>
                 <Link to="/about">Start enrollment</Link>
               </Button>
-              <p className="px-2 pt-2 text-xs uppercase tracking-[0.24em] text-slate-400">
+              <p className="px-2 pt-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
                 {siteConfig.brandSubtitle}
               </p>
             </nav>

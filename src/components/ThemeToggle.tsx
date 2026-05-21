@@ -18,7 +18,7 @@ export function ThemeToggle() {
       <Button
         variant="outline"
         size="icon"
-        className="rounded-full border border-border/50 bg-background/70 shadow-sm opacity-0"
+        className="rounded-full border border-border/60 bg-card/80 shadow-sm opacity-0"
       >
         <span className="sr-only">Toggle theme</span>
       </Button>
@@ -29,7 +29,7 @@ export function ThemeToggle() {
     <Button
       variant="outline"
       size="icon"
-      className="rounded-full border border-border/50 bg-background/70 dark:bg-slate-800/80 dark:border-slate-700/50 shadow-sm transition-all transition-colors duration-300 hover:bg-background hover:scale-105"
+      className="rounded-full border border-border/60 bg-card/80 text-foreground shadow-sm transition-all duration-300 hover:scale-105 hover:bg-card"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

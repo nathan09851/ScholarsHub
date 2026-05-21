@@ -15,7 +15,7 @@ const BrandMark = ({
   className,
 }: BrandMarkProps) => {
   const titleClass = dark ? "text-white" : "text-foreground";
-  const subtitleClass = dark ? "text-white/60" : "text-slate-500";
+  const subtitleClass = dark ? "text-white/60" : "text-muted-foreground";
 
   return (
     <div className={["flex items-center gap-3", className].filter(Boolean).join(" ")}>

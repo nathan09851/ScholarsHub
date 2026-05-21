@@ -100,11 +100,11 @@ const Subjects = () => {
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                       <div
                         aria-hidden="true"
-                        className={`inline-flex rounded-2xl bg-gradient-to-br ${subject.accent} p-3 text-foreground shadow-sm`}
+                        className={`inline-flex rounded-2xl bg-gradient-to-br ${subject.accent} p-3 text-slate-950 shadow-sm`}
                       >
                         <Icon className="h-6 w-6" />
                       </div>
-                      <div className="rounded-full bg-foreground/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                      <div className="tone-chip px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em]">
                         {subject.grades}
                       </div>
                     </div>

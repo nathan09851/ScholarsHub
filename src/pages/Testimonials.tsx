@@ -67,33 +67,33 @@ const Testimonials = () => {
               />
 
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                <Card className="rounded-[22px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                <Card className="rounded-[22px] border-border/50 bg-muted/70 shadow-none">
                   <CardContent className="space-y-2 p-5">
                     <Star aria-hidden="true" className="h-5 w-5 text-amber-500" />
                     <p className="font-serif text-3xl font-bold text-foreground">
                       5.0/5
                     </p>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm text-muted-foreground">
                       Average review rating
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="rounded-[22px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                <Card className="rounded-[22px] border-border/50 bg-muted/70 shadow-none">
                   <CardContent className="space-y-2 p-5">
                     <ShieldCheck aria-hidden="true" className="h-5 w-5 text-cyan-600" />
                     <p className="font-serif text-3xl font-bold text-foreground">
                       40+
                     </p>
-                    <p className="text-sm text-slate-600">Google & Site reviews</p>
+                    <p className="text-sm text-muted-foreground">Google & Site reviews</p>
                   </CardContent>
                 </Card>
-                <Card className="rounded-[22px] border-slate-900/8 bg-slate-50/80 shadow-none">
+                <Card className="rounded-[22px] border-border/50 bg-muted/70 shadow-none">
                   <CardContent className="space-y-2 p-5">
                     <ExternalLink aria-hidden="true" className="h-5 w-5 text-emerald-600" />
                     <p className="font-serif text-3xl font-bold text-foreground">
                       Live
                     </p>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm text-muted-foreground">
                       Real feedback
                     </p>
                   </CardContent>

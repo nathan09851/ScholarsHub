@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 import { siteConfig } from "@/content/site";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -41,10 +41,19 @@ const intentOptions: InquiryFormValues["intent"][] = [
 ];
 
 const inputClasses =
-  "h-12 rounded-2xl border-white/20 bg-white/80 text-slate-900 shadow-sm placeholder:text-slate-500 focus-visible:ring-amber-500";
+  "h-12 rounded-2xl border-input bg-background/80 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary dark:border-white/12 dark:bg-slate-950/55 dark:text-white dark:placeholder:text-slate-400";
 
 const textAreaClasses =
-  "min-h-28 rounded-2xl border-white/20 bg-white/80 text-slate-900 shadow-sm placeholder:text-slate-500 focus-visible:ring-amber-500";
+  "min-h-28 rounded-2xl border-input bg-background/80 text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:ring-primary dark:border-white/12 dark:bg-slate-950/55 dark:text-white dark:placeholder:text-slate-400";
+
+const labelClasses = "text-sm font-medium text-foreground dark:text-white/92";
+const errorClasses = "min-h-5 text-xs text-destructive dark:text-rose-200";
+const optionBaseClasses = "cursor-pointer rounded-2xl border px-4 py-3 text-sm transition";
+const optionIdleClasses =
+  "border-border/70 bg-muted/60 text-muted-foreground hover:border-primary/40 hover:bg-muted dark:border-white/12 dark:bg-white/5 dark:text-white/78 dark:hover:border-white/28";
+const optionActiveClasses =
+  "border-primary bg-primary/15 text-foreground ring-1 ring-primary/25 dark:text-white";
+const campusOptionBaseClasses = "cursor-pointer rounded-full border px-4 py-2 text-sm transition";
 
 const InquiryForm = ({
   defaultIntent = "callback",
@@ -96,37 +105,37 @@ const InquiryForm = ({
   return (
     <Card
       className={[
-        "overflow-hidden rounded-[28px] border border-slate-800/60 bg-slate-900/95 shadow-2xl backdrop-blur-xl",
+        "overflow-hidden rounded-[28px] border border-border/60 bg-card/96 text-card-foreground shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/94",
         "flex flex-col lg:flex-row",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
     >
-      <div className="flex-1 lg:w-1/3 lg:max-w-sm border-b lg:border-b-0 lg:border-r border-white/10 bg-slate-950/50 p-6 sm:p-8">
+      <div className="flex-1 border-b border-border/60 bg-muted/70 p-6 sm:p-8 lg:w-1/3 lg:max-w-sm lg:border-b-0 lg:border-r dark:border-white/10 dark:bg-slate-950/36">
         <div className="space-y-3">
-        <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-amber-200">
+        <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/25 bg-primary/12 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
           <ShieldCheck className="h-3.5 w-3.5" />
           Secure inquiry flow
         </div>
         {/* h2 instead of default h3 — fixes heading hierarchy skip (no parent h2 in hero section) */}
-        <h2 className="font-serif text-3xl font-semibold tracking-tight text-white">{title}</h2>
-        <p className="max-w-2xl text-sm leading-6 text-white/90">{description}</p>
+        <h2 className="font-serif text-3xl font-semibold tracking-tight text-foreground dark:text-white">{title}</h2>
+        <p className="max-w-2xl text-sm leading-6 text-muted-foreground dark:text-white/78">{description}</p>
         </div>
       </div>
 
-      <div className="flex-[2] bg-slate-900/60 p-6 sm:p-8">
+      <div className="flex-[2] bg-card/80 p-6 sm:p-8 dark:bg-slate-900/60">
         <CardContent className="space-y-6 h-full p-0">
         {isSubmitted ? (
           <div
             aria-live="polite"
-            className="rounded-[24px] border border-emerald-200/40 bg-emerald-100/10 p-6 text-white"
+            className="rounded-[24px] border border-emerald-500/30 bg-emerald-500/10 p-6 text-foreground dark:text-white"
           >
-            <div className="mb-4 inline-flex rounded-full bg-emerald-400/20 p-3 text-emerald-100">
+            <div className="mb-4 inline-flex rounded-full bg-emerald-500/15 p-3 text-emerald-600 dark:text-emerald-200">
               <PhoneCall className="h-5 w-5" />
             </div>
             <h3 className="text-2xl font-semibold">Inquiry received</h3>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-white/78">
+            <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground dark:text-white/78">
               Thanks for sharing your details. Schoolars Hub can now follow up on
               the right class timing, subject fit, or enrollment support.
             </p>
@@ -163,7 +172,7 @@ const InquiryForm = ({
 
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-white/95" htmlFor={fid("fullName")}>
+                <Label className={labelClasses} htmlFor={fid("fullName")}>
                   Parent or guardian name
                 </Label>
                 <Input
@@ -172,13 +181,13 @@ const InquiryForm = ({
                   placeholder="Enter parent name"
                   {...form.register("fullName")}
                 />
-                <p className="min-h-5 text-xs text-rose-200">
+                <p className={errorClasses}>
                   {form.formState.errors.fullName?.message}
                 </p>
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-white/95" htmlFor={fid("studentName")}>
+                <Label className={labelClasses} htmlFor={fid("studentName")}>
                   Student name
                 </Label>
                 <Input
@@ -187,13 +196,13 @@ const InquiryForm = ({
                   placeholder="Enter student name"
                   {...form.register("studentName")}
                 />
-                <p className="min-h-5 text-xs text-rose-200">
+                <p className={errorClasses}>
                   {form.formState.errors.studentName?.message}
                 </p>
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-white/95" htmlFor={fid("phone")}>
+                <Label className={labelClasses} htmlFor={fid("phone")}>
                   Phone number
                 </Label>
                 <Input
@@ -203,13 +212,13 @@ const InquiryForm = ({
                   placeholder="+91 98XXXXXXXX"
                   {...form.register("phone")}
                 />
-                <p className="min-h-5 text-xs text-rose-200">
+                <p className={errorClasses}>
                   {form.formState.errors.phone?.message}
                 </p>
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-white/95" htmlFor={fid("email")}>
+                <Label className={labelClasses} htmlFor={fid("email")}>
                   Email address
                 </Label>
                 <Input
@@ -219,13 +228,13 @@ const InquiryForm = ({
                   type="email"
                   {...form.register("email")}
                 />
-                <p className="min-h-5 text-xs text-rose-200">
+                <p className={errorClasses}>
                   {form.formState.errors.email?.message}
                 </p>
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-white/95" htmlFor={fid("classLevel")}>
+                <Label className={labelClasses} htmlFor={fid("classLevel")}>
                   Student class
                 </Label>
                 <Input
@@ -234,13 +243,13 @@ const InquiryForm = ({
                   placeholder="Example: Class 8"
                   {...form.register("classLevel")}
                 />
-                <p className="min-h-5 text-xs text-rose-200">
+                <p className={errorClasses}>
                   {form.formState.errors.classLevel?.message}
                 </p>
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-white/95" htmlFor={fid("subjectInterest")}>
+                <Label className={labelClasses} htmlFor={fid("subjectInterest")}>
                   Subject support needed
                 </Label>
                 <Input
@@ -249,14 +258,14 @@ const InquiryForm = ({
                   placeholder="Maths, Science, English..."
                   {...form.register("subjectInterest")}
                 />
-                <p className="min-h-5 text-xs text-rose-200">
+                <p className={errorClasses}>
                   {form.formState.errors.subjectInterest?.message}
                 </p>
               </div>
             </div>
 
             <fieldset className="space-y-3">
-              <legend className="text-sm font-medium text-white/95">
+              <legend className={labelClasses}>
                 What kind of help do you want first?
               </legend>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -265,10 +274,8 @@ const InquiryForm = ({
                   const inputId = fid(`intent-${option}`);
                   return (
                     <label
-                      className={`cursor-pointer rounded-2xl border px-4 py-3 text-sm transition ${
-                        checked
-                          ? "border-amber-400 bg-amber-400/18 text-white"
-                          : "border-white/15 bg-white/6 text-white/78 hover:border-white/30"
+                      className={`${optionBaseClasses} ${
+                        checked ? optionActiveClasses : optionIdleClasses
                       }`}
                       key={option}
                       htmlFor={inputId}
@@ -288,7 +295,7 @@ const InquiryForm = ({
             </fieldset>
 
             <fieldset className="space-y-3">
-              <legend className="text-sm font-medium text-white">
+              <legend className={labelClasses}>
                 Preferred campus
               </legend>
               <div className="flex flex-wrap gap-3">
@@ -297,10 +304,8 @@ const InquiryForm = ({
                   const inputId = fid(`campus-${campus}`);
                   return (
                     <label
-                      className={`cursor-pointer rounded-full border px-4 py-2 text-sm transition ${
-                        checked
-                          ? "border-cyan-300 bg-cyan-300/18 text-white"
-                          : "border-white/15 bg-white/6 text-white/78 hover:border-white/30"
+                      className={`${campusOptionBaseClasses} ${
+                        checked ? optionActiveClasses : optionIdleClasses
                       }`}
                       key={campus}
                       htmlFor={inputId}
@@ -320,7 +325,7 @@ const InquiryForm = ({
             </fieldset>
 
             <div className="space-y-2">
-              <Label className="text-white" htmlFor={fid("message")}>
+              <Label className={labelClasses} htmlFor={fid("message")}>
                 Message
               </Label>
               <Textarea
@@ -329,20 +334,20 @@ const InquiryForm = ({
                 placeholder="Share any goals, exam concerns, or specific scheduling details."
                 {...form.register("message")}
               />
-              <p className="min-h-5 text-xs text-rose-200">
+              <p className={errorClasses}>
                 {form.formState.errors.message?.message}
               </p>
             </div>
 
-            <div className="flex flex-col gap-4 rounded-[24px] border border-white/10 bg-slate-950/30 p-4 text-sm text-white/80 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-4 rounded-[24px] border border-border/60 bg-muted/65 p-4 text-sm text-muted-foreground lg:flex-row lg:items-center lg:justify-between dark:border-white/10 dark:bg-slate-950/32 dark:text-white/78">
               <div>
-                <p className="font-medium text-white/95">Submission summary</p>
+                <p className="font-medium text-foreground dark:text-white/95">Submission summary</p>
                 <p className="mt-1">
                   {watchedStudentName || "Student"} -{" "}
                   {watchedClassLevel || "Class details pending"}
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-amber-200">
+              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary">
                 <MessageSquare className="h-4 w-4" />
                 Preview before sending
               </div>
