@@ -7,7 +7,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 // Image categories for filtering
-const categories = ["All", "Campus", "Trips & Events"];
+const categories = ["All", "Campus", "Trips & Events", "10th Std"];
 
 // Gallery images — all using WebP (97–98% smaller than raw JPEGs)
 // Fallback src points to original for browsers without WebP support (Edge Legacy only)
@@ -37,6 +37,56 @@ const galleryImages = [
   { id: 22, src: "/gallery-webp/IMG_2037.webp",  fallback: "/gallery-images/IMG_2037.JPG",  alt: "Candid moment of student life", category: "Trips & Events" },
   { id: 23, src: "/gallery-webp/IMG_2038.webp",  fallback: "/gallery-images/IMG_2038.JPG",  alt: "Friends enjoying the school trip together", category: "Trips & Events" },
   { id: 24, src: "/gallery-webp/group-photo.webp", fallback: "/gallery-images/group-photo.jpeg", alt: "Group photo of students and teachers", category: "Trips & Events" },
+  // 10th Std 2025-2026 Batch Images from Google Drive
+  { id: 25, src: "https://lh3.googleusercontent.com/d/1LzxthWVtXYG47ynQSbucQ8fBBITvQGuS", fallback: "https://lh3.googleusercontent.com/d/1LzxthWVtXYG47ynQSbucQ8fBBITvQGuS", alt: "10th Std 2025-2026 Batch - Memory 1", category: "10th Std" },
+  { id: 26, src: "https://lh3.googleusercontent.com/d/17nmr06B8UeS2bTHvVOKwBJEx4WIDVbr2", fallback: "https://lh3.googleusercontent.com/d/17nmr06B8UeS2bTHvVOKwBJEx4WIDVbr2", alt: "10th Std 2025-2026 Batch - Memory 2", category: "10th Std" },
+  { id: 27, src: "https://lh3.googleusercontent.com/d/1h5bI0TK4evabhexXTWb3QW0-xoKKpAMb", fallback: "https://lh3.googleusercontent.com/d/1h5bI0TK4evabhexXTWb3QW0-xoKKpAMb", alt: "10th Std 2025-2026 Batch - Memory 3", category: "10th Std" },
+  { id: 28, src: "https://lh3.googleusercontent.com/d/1U_SmMr2EWlda-TdwVfQY6JM8-D6ET6OI", fallback: "https://lh3.googleusercontent.com/d/1U_SmMr2EWlda-TdwVfQY6JM8-D6ET6OI", alt: "10th Std 2025-2026 Batch - Memory 4", category: "10th Std" },
+  { id: 29, src: "https://lh3.googleusercontent.com/d/1Jg_k0CcvBDBuCk_D2KW6j7w1OCBr8_aU", fallback: "https://lh3.googleusercontent.com/d/1Jg_k0CcvBDBuCk_D2KW6j7w1OCBr8_aU", alt: "10th Std 2025-2026 Batch - Memory 5", category: "10th Std" },
+  { id: 30, src: "https://lh3.googleusercontent.com/d/1J_27jDErdnQgEDxvj9NzKxDIKXYCU2aE", fallback: "https://lh3.googleusercontent.com/d/1J_27jDErdnQgEDxvj9NzKxDIKXYCU2aE", alt: "10th Std 2025-2026 Batch - Memory 6", category: "10th Std" },
+  { id: 31, src: "https://lh3.googleusercontent.com/d/1cRyEMN5YB4S5LOI4swRTguKsYmT7Voko", fallback: "https://lh3.googleusercontent.com/d/1cRyEMN5YB4S5LOI4swRTguKsYmT7Voko", alt: "10th Std 2025-2026 Batch - Memory 7", category: "10th Std" },
+  { id: 32, src: "https://lh3.googleusercontent.com/d/1GuCarb4mBIJfp2xHSXjw8jkxtbb_R-WF", fallback: "https://lh3.googleusercontent.com/d/1GuCarb4mBIJfp2xHSXjw8jkxtbb_R-WF", alt: "10th Std 2025-2026 Batch - Memory 8", category: "10th Std" },
+  { id: 33, src: "https://lh3.googleusercontent.com/d/1uie5LLKcfApnFWWQeG7npy7BevAoFmqq", fallback: "https://lh3.googleusercontent.com/d/1uie5LLKcfApnFWWQeG7npy7BevAoFmqq", alt: "10th Std 2025-2026 Batch - Memory 9", category: "10th Std" },
+  { id: 34, src: "https://lh3.googleusercontent.com/d/1ovHNHeacN69qrw4eFjMPwCxZAn9fLv7P", fallback: "https://lh3.googleusercontent.com/d/1ovHNHeacN69qrw4eFjMPwCxZAn9fLv7P", alt: "10th Std 2025-2026 Batch - Memory 10", category: "10th Std" },
+  { id: 35, src: "https://lh3.googleusercontent.com/d/1ALNwI5pyIb8JUcPx67e_6mdwORvrVJJf", fallback: "https://lh3.googleusercontent.com/d/1ALNwI5pyIb8JUcPx67e_6mdwORvrVJJf", alt: "10th Std 2025-2026 Batch - Memory 11", category: "10th Std" },
+  { id: 36, src: "https://lh3.googleusercontent.com/d/1zgaEvGex_634QUouYAKt7pm0F5-NP9Xa", fallback: "https://lh3.googleusercontent.com/d/1zgaEvGex_634QUouYAKt7pm0F5-NP9Xa", alt: "10th Std 2025-2026 Batch - Memory 12", category: "10th Std" },
+  { id: 37, src: "https://lh3.googleusercontent.com/d/15fXuuGjSGmJwKPEhigyEQY-xp6Z4Zd-m", fallback: "https://lh3.googleusercontent.com/d/15fXuuGjSGmJwKPEhigyEQY-xp6Z4Zd-m", alt: "10th Std 2025-2026 Batch - Memory 13", category: "10th Std" },
+  { id: 38, src: "https://lh3.googleusercontent.com/d/1bLZ4AgQMOLGYF29JfOaJkuauQWn7-LNm", fallback: "https://lh3.googleusercontent.com/d/1bLZ4AgQMOLGYF29JfOaJkuauQWn7-LNm", alt: "10th Std 2025-2026 Batch - Memory 14", category: "10th Std" },
+  { id: 39, src: "https://lh3.googleusercontent.com/d/1y3j-9Izvn9qs2HDRuZHnbgMMMZpQgQgP", fallback: "https://lh3.googleusercontent.com/d/1y3j-9Izvn9qs2HDRuZHnbgMMMZpQgQgP", alt: "10th Std 2025-2026 Batch - Memory 15", category: "10th Std" },
+  { id: 40, src: "https://lh3.googleusercontent.com/d/1ahe12CWLD5V3YXAJRC0BhaV7tNcU9Oob", fallback: "https://lh3.googleusercontent.com/d/1ahe12CWLD5V3YXAJRC0BhaV7tNcU9Oob", alt: "10th Std 2025-2026 Batch - Memory 16", category: "10th Std" },
+  { id: 41, src: "https://lh3.googleusercontent.com/d/1iZ9RZx21Ms7nfASJFp8SSf4RHaU5gHPq", fallback: "https://lh3.googleusercontent.com/d/1iZ9RZx21Ms7nfASJFp8SSf4RHaU5gHPq", alt: "10th Std 2025-2026 Batch - Memory 17", category: "10th Std" },
+  { id: 42, src: "https://lh3.googleusercontent.com/d/1PYGTQm592O9DjEeM1Rastx_vZ6FH5_QI", fallback: "https://lh3.googleusercontent.com/d/1PYGTQm592O9DjEeM1Rastx_vZ6FH5_QI", alt: "10th Std 2025-2026 Batch - Memory 18", category: "10th Std" },
+  { id: 43, src: "https://lh3.googleusercontent.com/d/1eFNRO0zABSJcCnIhgM3HYmWCt9AUROnL", fallback: "https://lh3.googleusercontent.com/d/1eFNRO0zABSJcCnIhgM3HYmWCt9AUROnL", alt: "10th Std 2025-2026 Batch - Memory 19", category: "10th Std" },
+  { id: 44, src: "https://lh3.googleusercontent.com/d/136-1LTy5cJqR7zaOZlLUn8G-Y39BY2cs", fallback: "https://lh3.googleusercontent.com/d/136-1LTy5cJqR7zaOZlLUn8G-Y39BY2cs", alt: "10th Std 2025-2026 Batch - Memory 20", category: "10th Std" },
+  { id: 45, src: "https://lh3.googleusercontent.com/d/1XZt7kO3Gh-H1eRFAQQYdfmNBii6wQ2Ab", fallback: "https://lh3.googleusercontent.com/d/1XZt7kO3Gh-H1eRFAQQYdfmNBii6wQ2Ab", alt: "10th Std 2025-2026 Batch - Memory 21", category: "10th Std" },
+  { id: 46, src: "https://lh3.googleusercontent.com/d/1C7IO2nGQfQ8aNale3FaLIwiaYlQyeThL", fallback: "https://lh3.googleusercontent.com/d/1C7IO2nGQfQ8aNale3FaLIwiaYlQyeThL", alt: "10th Std 2025-2026 Batch - Memory 22", category: "10th Std" },
+  { id: 47, src: "https://lh3.googleusercontent.com/d/1MxZX2bARCcQXTbIbQ8BBmnbT5YEbrgUX", fallback: "https://lh3.googleusercontent.com/d/1MxZX2bARCcQXTbIbQ8BBmnbT5YEbrgUX", alt: "10th Std 2025-2026 Batch - Memory 23", category: "10th Std" },
+  { id: 48, src: "https://lh3.googleusercontent.com/d/14gyGQol7pnd-CHhG5hvh8NpPeItGOIR4", fallback: "https://lh3.googleusercontent.com/d/14gyGQol7pnd-CHhG5hvh8NpPeItGOIR4", alt: "10th Std 2025-2026 Batch - Memory 24", category: "10th Std" },
+  { id: 49, src: "https://lh3.googleusercontent.com/d/1Ez3k78ph0smGr5NMYkiOdLYWA8VtpqI7", fallback: "https://lh3.googleusercontent.com/d/1Ez3k78ph0smGr5NMYkiOdLYWA8VtpqI7", alt: "10th Std 2025-2026 Batch - Memory 25", category: "10th Std" },
+  { id: 50, src: "https://lh3.googleusercontent.com/d/1-9IqFvvr_3cJa6kN-cYZ8eeWcmh-3PvL", fallback: "https://lh3.googleusercontent.com/d/1-9IqFvvr_3cJa6kN-cYZ8eeWcmh-3PvL", alt: "10th Std 2025-2026 Batch - Memory 26", category: "10th Std" },
+  { id: 51, src: "https://lh3.googleusercontent.com/d/1zfmJtkhxgfDXZkjAaws8vyIl__nIJNHs", fallback: "https://lh3.googleusercontent.com/d/1zfmJtkhxgfDXZkjAaws8vyIl__nIJNHs", alt: "10th Std 2025-2026 Batch - Memory 27", category: "10th Std" },
+  { id: 52, src: "https://lh3.googleusercontent.com/d/1PyRBBfIwh-UHartI0z60O7HfV58WT_L3", fallback: "https://lh3.googleusercontent.com/d/1PyRBBfIwh-UHartI0z60O7HfV58WT_L3", alt: "10th Std 2025-2026 Batch - Memory 28", category: "10th Std" },
+  { id: 53, src: "https://lh3.googleusercontent.com/d/1wvddXKLOibuNwtp1HUSX7yUSWCppsNl1", fallback: "https://lh3.googleusercontent.com/d/1wvddXKLOibuNwtp1HUSX7yUSWCppsNl1", alt: "10th Std 2025-2026 Batch - Memory 29", category: "10th Std" },
+  { id: 54, src: "https://lh3.googleusercontent.com/d/14vY-Tu_tMN4U0Iq2xvxQ66Zl0TVw5oy5", fallback: "https://lh3.googleusercontent.com/d/14vY-Tu_tMN4U0Iq2xvxQ66Zl0TVw5oy5", alt: "10th Std 2025-2026 Batch - Memory 30", category: "10th Std" },
+  { id: 55, src: "https://lh3.googleusercontent.com/d/11vPBcEGiRUgZ6Boqiwb4Py1JMOqu0Urz", fallback: "https://lh3.googleusercontent.com/d/11vPBcEGiRUgZ6Boqiwb4Py1JMOqu0Urz", alt: "10th Std 2025-2026 Batch - Memory 31", category: "10th Std" },
+  { id: 56, src: "https://lh3.googleusercontent.com/d/1OrTu3t1fNEIwU3BWH0khKdfjbYUF1-je", fallback: "https://lh3.googleusercontent.com/d/1OrTu3t1fNEIwU3BWH0khKdfjbYUF1-je", alt: "10th Std 2025-2026 Batch - Memory 32", category: "10th Std" },
+  { id: 57, src: "https://lh3.googleusercontent.com/d/11AD_Ok8m2dgYawbzXD216cHMxukAmmHE", fallback: "https://lh3.googleusercontent.com/d/11AD_Ok8m2dgYawbzXD216cHMxukAmmHE", alt: "10th Std 2025-2026 Batch - Memory 33", category: "10th Std" },
+  { id: 58, src: "https://lh3.googleusercontent.com/d/1M7tPFvOJL02rQZwljX7dLxMd8UUOdDdP", fallback: "https://lh3.googleusercontent.com/d/1M7tPFvOJL02rQZwljX7dLxMd8UUOdDdP", alt: "10th Std 2025-2026 Batch - Memory 34", category: "10th Std" },
+  { id: 59, src: "https://lh3.googleusercontent.com/d/1cxFmxK-wuhs3ng29Odcqx7YcD3V7A58C", fallback: "https://lh3.googleusercontent.com/d/1cxFmxK-wuhs3ng29Odcqx7YcD3V7A58C", alt: "10th Std 2025-2026 Batch - Memory 35", category: "10th Std" },
+  { id: 60, src: "https://lh3.googleusercontent.com/d/1csvHrV68Bcz6NNasLo5SgaZNfXZ6cIsp", fallback: "https://lh3.googleusercontent.com/d/1csvHrV68Bcz6NNasLo5SgaZNfXZ6cIsp", alt: "10th Std 2025-2026 Batch - Memory 36", category: "10th Std" },
+  { id: 61, src: "https://lh3.googleusercontent.com/d/1pAlY9bkEuqeWdvFmXXHfT_gC1rlhzUl8", fallback: "https://lh3.googleusercontent.com/d/1pAlY9bkEuqeWdvFmXXHfT_gC1rlhzUl8", alt: "10th Std 2025-2026 Batch - Memory 37", category: "10th Std" },
+  { id: 62, src: "https://lh3.googleusercontent.com/d/1QEigpcBAitIg-juATuRvVOUrEFka3I55", fallback: "https://lh3.googleusercontent.com/d/1QEigpcBAitIg-juATuRvVOUrEFka3I55", alt: "10th Std 2025-2026 Batch - Memory 38", category: "10th Std" },
+  { id: 63, src: "https://lh3.googleusercontent.com/d/1yX0TV7U29SpK2Zv8kD1yGkoE3w-wzx7o", fallback: "https://lh3.googleusercontent.com/d/1yX0TV7U29SpK2Zv8kD1yGkoE3w-wzx7o", alt: "10th Std 2025-2026 Batch - Memory 39", category: "10th Std" },
+  { id: 64, src: "https://lh3.googleusercontent.com/d/1-t1cAJyE94tfg2iwvuW_oFJ5VC5tK-5p", fallback: "https://lh3.googleusercontent.com/d/1-t1cAJyE94tfg2iwvuW_oFJ5VC5tK-5p", alt: "10th Std 2025-2026 Batch - Memory 40", category: "10th Std" },
+  { id: 65, src: "https://lh3.googleusercontent.com/d/1CBvJFnm0TpyhD-HhuRdBiweJiD1gqCFP", fallback: "https://lh3.googleusercontent.com/d/1CBvJFnm0TpyhD-HhuRdBiweJiD1gqCFP", alt: "10th Std 2025-2026 Batch - Memory 41", category: "10th Std" },
+  { id: 66, src: "https://lh3.googleusercontent.com/d/1LdEyjkwynDZ4775MaRXvJm_UYF-6JeJa", fallback: "https://lh3.googleusercontent.com/d/1LdEyjkwynDZ4775MaRXvJm_UYF-6JeJa", alt: "10th Std 2025-2026 Batch - Memory 42", category: "10th Std" },
+  { id: 67, src: "https://lh3.googleusercontent.com/d/1Vtxocc-GM8T38hyNFkCGKXzEnHM7cBIU", fallback: "https://lh3.googleusercontent.com/d/1Vtxocc-GM8T38hyNFkCGKXzEnHM7cBIU", alt: "10th Std 2025-2026 Batch - Memory 43", category: "10th Std" },
+  { id: 68, src: "https://lh3.googleusercontent.com/d/1QeThwwlauB8yY0dqr5fFmDCUN_L8uWdF", fallback: "https://lh3.googleusercontent.com/d/1QeThwwlauB8yY0dqr5fFmDCUN_L8uWdF", alt: "10th Std 2025-2026 Batch - Memory 44", category: "10th Std" },
+  { id: 69, src: "https://lh3.googleusercontent.com/d/1oQX0xmeyMc2ET0Vi96o2AdFHPpbQgxrO", fallback: "https://lh3.googleusercontent.com/d/1oQX0xmeyMc2ET0Vi96o2AdFHPpbQgxrO", alt: "10th Std 2025-2026 Batch - Memory 45", category: "10th Std" },
+  { id: 70, src: "https://lh3.googleusercontent.com/d/1qlPzYk3PcRv-vB5b2vuZ9sN3D6jpOvML", fallback: "https://lh3.googleusercontent.com/d/1qlPzYk3PcRv-vB5b2vuZ9sN3D6jpOvML", alt: "10th Std 2025-2026 Batch - Memory 46", category: "10th Std" },
+  { id: 71, src: "https://lh3.googleusercontent.com/d/1V8tJG386G3U4Y4QPRTe9LMaiDxpmwhGx", fallback: "https://lh3.googleusercontent.com/d/1V8tJG386G3U4Y4QPRTe9LMaiDxpmwhGx", alt: "10th Std 2025-2026 Batch - Memory 47", category: "10th Std" },
+  { id: 72, src: "https://lh3.googleusercontent.com/d/1zTa2y6w2S3ENpfVnwCT7Uw1M0lJE-kNX", fallback: "https://lh3.googleusercontent.com/d/1zTa2y6w2S3ENpfVnwCT7Uw1M0lJE-kNX", alt: "10th Std 2025-2026 Batch - Memory 48", category: "10th Std" },
+  { id: 73, src: "https://lh3.googleusercontent.com/d/1aXmj7s-VU76Ff5paTAbvO0ooF-jkpJmc", fallback: "https://lh3.googleusercontent.com/d/1aXmj7s-VU76Ff5paTAbvO0ooF-jkpJmc", alt: "10th Std 2025-2026 Batch - Memory 49", category: "10th Std" },
 ];
 
 const Gallery = () => {
