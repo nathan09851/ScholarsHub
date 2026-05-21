@@ -7,17 +7,17 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 // Image categories for filtering
-const categories = ["All", "Campus", "Trips & Events", "10th Std 2025-2026"];
+const categories = ["All", "Trips & Events", "10th Std 2025-2026"];
 
 // Gallery images — all using WebP (97–98% smaller than raw JPEGs)
 // Fallback src points to original for browsers without WebP support (Edge Legacy only)
 const galleryImages = [
-  { id: 1, src: "/gallery-webp/media__1776553220783.webp", fallback: "/gallery-images/media__1776553220783.jpg", alt: "Students engaged in a class discussion", category: "Campus" },
-  { id: 2, src: "/gallery-webp/media__1776553220792.webp", fallback: "/gallery-images/media__1776553220792.jpg", alt: "Student eating a snack during break", category: "Campus" },
-  { id: 3, src: "/gallery-webp/media__1776553221092.webp", fallback: "/gallery-images/media__1776553221092.jpg", alt: "Students talking near the campus garden", category: "Campus" },
-  { id: 4, src: "/gallery-webp/media__1776555466477.webp", fallback: "/gallery-images/media__1776555466477.jpg", alt: "Student with a backpack", category: "Campus" },
-  { id: 5, src: "/gallery-webp/media__1776553221134.webp", fallback: "/gallery-images/media__1776553221134.jpg", alt: "Students enjoying outdoor time", category: "Campus" },
-  { id: 6, src: "/gallery-webp/media__1776553221130.webp", fallback: "/gallery-images/media__1776553221130.jpg", alt: "Students collaborating on a project", category: "Campus" },
+  { id: 1, src: "/gallery-webp/media__1776553220783.webp", fallback: "/gallery-images/media__1776553220783.jpg", alt: "Students engaged in a class discussion", category: "Trips & Events" },
+  { id: 2, src: "/gallery-webp/media__1776553220792.webp", fallback: "/gallery-images/media__1776553220792.jpg", alt: "Student eating a snack during break", category: "Trips & Events" },
+  { id: 3, src: "/gallery-webp/media__1776553221092.webp", fallback: "/gallery-images/media__1776553221092.jpg", alt: "Students talking near the campus garden", category: "Trips & Events" },
+  { id: 4, src: "/gallery-webp/media__1776555466477.webp", fallback: "/gallery-images/media__1776555466477.jpg", alt: "Student with a backpack", category: "Trips & Events" },
+  { id: 5, src: "/gallery-webp/media__1776553221134.webp", fallback: "/gallery-images/media__1776553221134.jpg", alt: "Students enjoying outdoor time", category: "Trips & Events" },
+  { id: 6, src: "/gallery-webp/media__1776553221130.webp", fallback: "/gallery-images/media__1776553221130.jpg", alt: "Students collaborating on a project", category: "Trips & Events" },
   // Trip & Event Images
   { id: 7,  src: "/gallery-webp/IMG_1691.webp",  fallback: "/gallery-images/IMG_1691.JPG",  alt: "Student splashing in the pool during the school trip", category: "Trips & Events" },
   { id: 8,  src: "/gallery-webp/IMG_1731.webp",  fallback: "/gallery-images/IMG_1731.JPG",  alt: "Cheerful student enjoying the pool outing", category: "Trips & Events" },
