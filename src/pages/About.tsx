@@ -28,24 +28,10 @@ const team = [
   },
   {
     name: "Avita",
-    role: "Mathematics Faculty",
+    role: "Maths and Science teacher",
     description:
       "Specialises in problem-solving, step-by-step reasoning, and exam preparation strategies.",
     image: "/team/avita.jpg",
-  },
-  {
-    name: "Marina",
-    role: "Academic Faculty",
-    description:
-      "Supports students with concept reinforcement and a calm, structured classroom rhythm.",
-    image: "/team/marina.jpg",
-  },
-  {
-    name: "Senha",
-    role: "Teaching Faculty",
-    description:
-      "Helps students stay consistent with daily lessons, revision practice, and academic confidence.",
-    image: "/team/senha.jpg",
   },
 ];
 

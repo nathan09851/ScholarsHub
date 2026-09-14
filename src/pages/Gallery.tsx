@@ -7,36 +7,35 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 // Image categories for filtering
-const categories = ["All", "Trips & Events", "10th Std 2025-2026"];
+const categories = ["All", "Trips", "10th Std 2025-2026"];
 
 // Gallery images — all using WebP (97–98% smaller than raw JPEGs)
 // Fallback src points to original for browsers without WebP support (Edge Legacy only)
 const galleryImages = [
-  { id: 1, src: "/gallery-webp/media__1776553220783.webp", fallback: "/gallery-images/media__1776553220783.jpg", alt: "Students engaged in a class discussion", category: "Trips & Events" },
-  { id: 2, src: "/gallery-webp/media__1776553220792.webp", fallback: "/gallery-images/media__1776553220792.jpg", alt: "Student eating a snack during break", category: "Trips & Events" },
-  { id: 3, src: "/gallery-webp/media__1776553221092.webp", fallback: "/gallery-images/media__1776553221092.jpg", alt: "Students talking near the campus garden", category: "Trips & Events" },
-  { id: 4, src: "/gallery-webp/media__1776555466477.webp", fallback: "/gallery-images/media__1776555466477.jpg", alt: "Student with a backpack", category: "Trips & Events" },
-  { id: 5, src: "/gallery-webp/media__1776553221134.webp", fallback: "/gallery-images/media__1776553221134.jpg", alt: "Students enjoying outdoor time", category: "Trips & Events" },
-  { id: 6, src: "/gallery-webp/media__1776553221130.webp", fallback: "/gallery-images/media__1776553221130.jpg", alt: "Students collaborating on a project", category: "Trips & Events" },
+  { id: 1, src: "/gallery-webp/media__1776553220783.webp", fallback: "/gallery-images/media__1776553220783.jpg", alt: "Students engaged in a class discussion", category: "Trips" },
+  { id: 2, src: "/gallery-webp/media__1776553220792.webp", fallback: "/gallery-images/media__1776553220792.jpg", alt: "Student eating a snack during break", category: "Trips" },
+  { id: 3, src: "/gallery-webp/media__1776553221092.webp", fallback: "/gallery-images/media__1776553221092.jpg", alt: "Students talking near the campus garden", category: "Trips" },
+  { id: 4, src: "/gallery-webp/media__1776555466477.webp", fallback: "/gallery-images/media__1776555466477.jpg", alt: "Student with a backpack", category: "Trips" },
+  { id: 5, src: "/gallery-webp/media__1776553221134.webp", fallback: "/gallery-images/media__1776553221134.jpg", alt: "Students enjoying outdoor time", category: "Trips" },
   // Trip & Event Images
-  { id: 7,  src: "/gallery-webp/IMG_1691.webp",  fallback: "/gallery-images/IMG_1691.JPG",  alt: "Student splashing in the pool during the school trip", category: "Trips & Events" },
-  { id: 8,  src: "/gallery-webp/IMG_1731.webp",  fallback: "/gallery-images/IMG_1731.JPG",  alt: "Cheerful student enjoying the pool outing", category: "Trips & Events" },
-  { id: 9,  src: "/gallery-webp/IMG_2054.webp",  fallback: "/gallery-images/IMG_2054.JPG",  alt: "Students having fun in the water", category: "Trips & Events" },
-  { id: 10, src: "/gallery-webp/IMG_1726.webp",  fallback: "/gallery-images/IMG_1726.JPG",  alt: "Exciting moment during the school picnic", category: "Trips & Events" },
-  { id: 11, src: "/gallery-webp/IMG_1752.webp",  fallback: "/gallery-images/IMG_1752.JPG",  alt: "Students participating in outdoor activities", category: "Trips & Events" },
-  { id: 12, src: "/gallery-webp/IMG_1757.webp",  fallback: "/gallery-images/IMG_1757.JPG",  alt: "Fun times at the water park", category: "Trips & Events" },
-  { id: 13, src: "/gallery-webp/IMG_1765.webp",  fallback: "/gallery-images/IMG_1765.JPG",  alt: "Student groups enjoying the sunny day", category: "Trips & Events" },
-  { id: 14, src: "/gallery-webp/IMG_1771.webp",  fallback: "/gallery-images/IMG_1771.JPG",  alt: "Laughter and joy during the field trip", category: "Trips & Events" },
-  { id: 15, src: "/gallery-webp/IMG_1782.webp",  fallback: "/gallery-images/IMG_1782.JPG",  alt: "Memories from the annual school outing", category: "Trips & Events" },
-  { id: 16, src: "/gallery-webp/IMG_1819.webp",  fallback: "/gallery-images/IMG_1819.JPG",  alt: "Students bonding outside the classroom", category: "Trips & Events" },
-  { id: 17, src: "/gallery-webp/IMG_1862.webp",  fallback: "/gallery-images/IMG_1862.JPG",  alt: "Water slide fun with students", category: "Trips & Events" },
-  { id: 18, src: "/gallery-webp/IMG_1864.webp",  fallback: "/gallery-images/IMG_1864.JPG",  alt: "Exciting slide action at the park", category: "Trips & Events" },
-  { id: 19, src: "/gallery-webp/IMG_1869.webp",  fallback: "/gallery-images/IMG_1869.JPG",  alt: "Group of students at the top of the slide", category: "Trips & Events" },
-  { id: 20, src: "/gallery-webp/IMG_1871.webp",  fallback: "/gallery-images/IMG_1871.JPG",  alt: "Getting ready for a splash", category: "Trips & Events" },
-  { id: 21, src: "/gallery-webp/IMG_1954.webp",  fallback: "/gallery-images/IMG_1954.JPG",  alt: "Student smiling for a photo at the event", category: "Trips & Events" },
-  { id: 22, src: "/gallery-webp/IMG_2037.webp",  fallback: "/gallery-images/IMG_2037.JPG",  alt: "Candid moment of student life", category: "Trips & Events" },
-  { id: 23, src: "/gallery-webp/IMG_2038.webp",  fallback: "/gallery-images/IMG_2038.JPG",  alt: "Friends enjoying the school trip together", category: "Trips & Events" },
-  { id: 24, src: "/gallery-webp/group-photo.webp", fallback: "/gallery-images/group-photo.jpeg", alt: "Group photo of students and teachers", category: "Trips & Events" },
+  { id: 7,  src: "/gallery-webp/IMG_1691.webp",  fallback: "/gallery-images/IMG_1691.JPG",  alt: "Student splashing in the pool during the school trip", category: "Trips" },
+  { id: 8,  src: "/gallery-webp/IMG_1731.webp",  fallback: "/gallery-images/IMG_1731.JPG",  alt: "Cheerful student enjoying the pool outing", category: "Trips" },
+  { id: 9,  src: "/gallery-webp/IMG_2054.webp",  fallback: "/gallery-images/IMG_2054.JPG",  alt: "Students having fun in the water", category: "Trips" },
+  { id: 10, src: "/gallery-webp/IMG_1726.webp",  fallback: "/gallery-images/IMG_1726.JPG",  alt: "Exciting moment during the school picnic", category: "Trips" },
+  { id: 11, src: "/gallery-webp/IMG_1752.webp",  fallback: "/gallery-images/IMG_1752.JPG",  alt: "Students participating in outdoor activities", category: "Trips" },
+  { id: 12, src: "/gallery-webp/IMG_1757.webp",  fallback: "/gallery-images/IMG_1757.JPG",  alt: "Fun times at the water park", category: "Trips" },
+  { id: 13, src: "/gallery-webp/IMG_1765.webp",  fallback: "/gallery-images/IMG_1765.JPG",  alt: "Student groups enjoying the sunny day", category: "Trips" },
+  { id: 14, src: "/gallery-webp/IMG_1771.webp",  fallback: "/gallery-images/IMG_1771.JPG",  alt: "Laughter and joy during the field trip", category: "Trips" },
+  { id: 15, src: "/gallery-webp/IMG_1782.webp",  fallback: "/gallery-images/IMG_1782.JPG",  alt: "Memories from the annual school outing", category: "Trips" },
+  { id: 16, src: "/gallery-webp/IMG_1819.webp",  fallback: "/gallery-images/IMG_1819.JPG",  alt: "Students bonding outside the classroom", category: "Trips" },
+  { id: 17, src: "/gallery-webp/IMG_1862.webp",  fallback: "/gallery-images/IMG_1862.JPG",  alt: "Water slide fun with students", category: "Trips" },
+  { id: 18, src: "/gallery-webp/IMG_1864.webp",  fallback: "/gallery-images/IMG_1864.JPG",  alt: "Exciting slide action at the park", category: "Trips" },
+  { id: 19, src: "/gallery-webp/IMG_1869.webp",  fallback: "/gallery-images/IMG_1869.JPG",  alt: "Group of students at the top of the slide", category: "Trips" },
+  { id: 20, src: "/gallery-webp/IMG_1871.webp",  fallback: "/gallery-images/IMG_1871.JPG",  alt: "Getting ready for a splash", category: "Trips" },
+  { id: 21, src: "/gallery-webp/IMG_1954.webp",  fallback: "/gallery-images/IMG_1954.JPG",  alt: "Student smiling for a photo at the event", category: "Trips" },
+  { id: 22, src: "/gallery-webp/IMG_2037.webp",  fallback: "/gallery-images/IMG_2037.JPG",  alt: "Candid moment of student life", category: "Trips" },
+  { id: 23, src: "/gallery-webp/IMG_2038.webp",  fallback: "/gallery-images/IMG_2038.JPG",  alt: "Friends enjoying the school trip together", category: "Trips" },
+  { id: 24, src: "/gallery-webp/group-photo.webp", fallback: "/gallery-images/group-photo.jpeg", alt: "Group photo of students and teachers", category: "Trips" },
   // 10th Std 2025-2026 Batch Images from Google Drive
   { id: 25, src: "https://lh3.googleusercontent.com/d/1LzxthWVtXYG47ynQSbucQ8fBBITvQGuS", fallback: "https://lh3.googleusercontent.com/d/1LzxthWVtXYG47ynQSbucQ8fBBITvQGuS", alt: "10th Std 2025-2026 Batch - Memory 1", category: "10th Std 2025-2026" },
   { id: 26, src: "https://lh3.googleusercontent.com/d/17nmr06B8UeS2bTHvVOKwBJEx4WIDVbr2", fallback: "https://lh3.googleusercontent.com/d/17nmr06B8UeS2bTHvVOKwBJEx4WIDVbr2", alt: "10th Std 2025-2026 Batch - Memory 2", category: "10th Std 2025-2026" },
@@ -175,10 +174,6 @@ const Gallery = () => {
                               decoding="async"
                             />
                           </picture>
-                          <div className="bg-card/90 backdrop-blur-md p-4 mt-2 rounded-lg">
-                            <p className="text-foreground font-medium text-center">{image.alt}</p>
-                            <p className="text-muted-foreground text-xs text-center mt-1 uppercase tracking-wider">{image.category}</p>
-                          </div>
                         </div>
                       </DialogContent>
                     </Dialog>

@@ -67,20 +67,6 @@ const Index = () => {
             {/* Full-bleed hero image — AVIF primary (mobile 800w / desktop 1920w), WebP fallback */}
             <div className="absolute inset-0">
               <picture>
-                {/* Mobile ≤1 768px: 800px AVIF ≈60 KB vs 457 KB original — saves ~2.0 s on Slow 4G */}
-                <source
-                  media="(max-width: 768px)"
-                  srcSet={HERO_AVIF_MOBILE}
-                  type="image/avif"
-                />
-                <source
-                  media="(max-width: 768px)"
-                  srcSet={HERO_WEBP_MOBILE}
-                  type="image/webp"
-                />
-                {/* Desktop: full-resolution AVIF */}
-                <source srcSet={HERO_AVIF} type="image/avif" />
-                <source srcSet={HERO_WEBP} type="image/webp" />
                 <img
                   alt="Schoolars Hub students and teachers at the coaching centre in Goa"
                   className="h-full w-full object-cover object-center"
@@ -88,7 +74,7 @@ const Index = () => {
                   loading="eager"
                   fetchpriority="high"
                   decoding="sync"
-                  src={HERO_JPG}
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1920&auto=format&fit=crop"
                   width={1920}
                 />
               </picture>
@@ -117,10 +103,10 @@ const Index = () => {
 
                 {/* headline */}
                 <AnimatedSection variant="fade-up" delay={200} duration={800}>
-                  <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight">
-                    Tuition that's clear,
+                  <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+                    Students where they excel not just in studies but overall,
                     <br />
-                    <span className="text-amber-300">trusted by families.</span>
+                    <span className="text-amber-300">we believe in every student!</span>
                   </h1>
                 </AnimatedSection>
 
@@ -222,7 +208,7 @@ const Index = () => {
                   >
                     {[...Array(5)].map((_, i) => (
                       <Star
-                        key={i}
+                         key={i}
                         className="h-3.5 w-3.5 fill-amber-400 text-amber-400"
                       />
                     ))}
