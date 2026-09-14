@@ -29,7 +29,7 @@ export const inquirySchema = z.object({
     .min(2, "Please mention the class.")
     .max(30, "Class must be 30 characters or less."),
   preferredCampus: z
-    .enum(["Thivim", "Corlim", "Either"])
+    .enum(["Thivim", "Porvorim", "Either"])
     .default("Either"),
   intent: z
     .enum(["callback", "fees", "enrollment", "demo"])

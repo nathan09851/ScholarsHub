@@ -137,10 +137,10 @@ export const campusLocations: CampusLocation[] = [
       "A dependable after-school option for families in North Goa looking for structured evening learning support.",
   },
   {
-    name: "Corlim Centre",
-    area: "Old Goa",
+    name: "Porvorim Centre",
+    area: "Porvorim, Goa",
     description:
-      "A convenient learning base for families who want closer access to subject guidance and exam preparation support.",
+      "Housing Board Colony, Porvorim, near Kavlekar Super Market, behind Shifa Pharmacy, Porvorim, Goa.",
   },
 ];
 

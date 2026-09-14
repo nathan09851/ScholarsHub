@@ -7,7 +7,7 @@ create table if not exists public.inquiry_requests (
   phone text not null check (char_length(phone) between 10 and 20),
   email text,
   class_level text not null check (char_length(class_level) between 2 and 30),
-  preferred_campus text not null check (preferred_campus in ('Thivim', 'Corlim', 'Either')),
+  preferred_campus text not null check (preferred_campus in ('Thivim', 'Porvorim', 'Either')),
   intent text not null check (intent in ('callback', 'fees', 'enrollment', 'demo')),
   subject_interest text not null check (char_length(subject_interest) between 2 and 120),
   message text,

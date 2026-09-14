@@ -29,7 +29,7 @@ interface InquiryFormProps {
 
 const campusOptions: InquiryFormValues["preferredCampus"][] = [
   "Thivim",
-  "Corlim",
+  "Porvorim",
   "Either",
 ];
 

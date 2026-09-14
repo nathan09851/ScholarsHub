@@ -53,8 +53,8 @@ const Navbar = () => {
     <header ref={navRef} className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl px-4 pt-3 sm:px-6 lg:px-8">
         <div
-          className={`mesh-border flex items-center justify-between rounded-[24px] border border-border/50 bg-card/82 px-3 py-2 shadow-lg backdrop-blur-xl transition-all duration-300 md:px-5 md:py-3 ${
-            scrolled ? "bg-card/95 py-1.5 shadow-xl" : ""
+          className={`mesh-border ios-glass flex items-center justify-between rounded-[24px] px-3 py-2 transition-all duration-300 md:px-5 md:py-3 ${
+            scrolled ? "ios-glass-scrolled py-1.5" : ""
           }`}
         >
           <Link
@@ -133,7 +133,7 @@ const Navbar = () => {
             isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="mt-2 rounded-[24px] border border-border/50 bg-card/95 p-4 shadow-xl backdrop-blur-xl transition-colors duration-300">
+          <div className="ios-glass-mobile mt-2 rounded-[24px] p-4 transition-colors duration-300">
             <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
               {navLinks.map((link, index) => {
                 const isActive = location.pathname === link.path;

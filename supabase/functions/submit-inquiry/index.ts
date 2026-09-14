@@ -9,7 +9,7 @@ const inquirySchema = z.object({
   phone: z.string().trim().min(10).max(20),
   email: z.string().trim().email().or(z.literal("")),
   classLevel: z.string().trim().min(2).max(30),
-  preferredCampus: z.enum(["Thivim", "Corlim", "Either"]),
+  preferredCampus: z.enum(["Thivim", "Porvorim", "Either"]),
   intent: z.enum(["callback", "fees", "enrollment", "demo"]),
   subjectInterest: z.string().trim().min(2).max(120),
   message: z.string().trim().max(600).optional().default(""),
